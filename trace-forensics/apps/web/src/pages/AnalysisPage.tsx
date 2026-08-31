@@ -5,36 +5,37 @@ import { ThreatBadge } from '../components/ThreatBadge';
 import { AuthVerificationCard } from '../components/AuthVerificationCard';
 import { RelayTimeline } from '../components/RelayTimeline';
 import { InteractiveThreatGraph } from '../components/InteractiveThreatGraph';
+import { HypothesisInvestigationTree } from '../components/HypothesisInvestigationTree';
 import { HeaderInspector } from '../components/HeaderInspector';
 import { ForensicReportModal } from '../components/ForensicReportModal';
 import { 
-  ShieldAlert, Activity, Key, Server, Network, 
-  Terminal, FileText, Download, Briefcase, CheckCircle2, ChevronRight, Lock
+  Activity, Key, Server, Network, 
+  Terminal, FileText, Download, Briefcase, CheckCircle2, GitFork, Calendar, ShieldAlert
 } from 'lucide-react';
 
 interface AnalysisPageProps {
   email: EmailDetail;
   onNavigate: (page: string) => void;
-  onLinkToCase?: (emailId: string) => void;
 }
 
 export const AnalysisPage: React.FC<AnalysisPageProps> = ({ email, onNavigate }) => {
-  const [activeTab, setActiveTab] = useState<'overview' | 'auth' | 'trace' | 'graph' | 'headers' | 'body'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'hypothesis' | 'graph' | 'trace' | 'auth' | 'headers' | 'body'>('overview');
   const [showReportModal, setShowReportModal] = useState(false);
   const [caseCreated, setCaseCreated] = useState(false);
 
   const tabs = [
     { id: 'overview', label: 'Signals & Verdict', icon: Activity },
-    { id: 'auth', label: 'Auth (SPF/DKIM/DMARC)', icon: Key },
-    { id: 'trace', label: 'Transmission Hops', icon: Server },
-    { id: 'graph', label: 'Threat Graph', icon: Network },
-    { id: 'headers', label: 'Headers Table', icon: Terminal },
-    { id: 'body', label: 'Raw Evidence', icon: FileText },
+    { id: 'hypothesis', label: 'Hypothesis Tree', icon: GitFork },
+    { id: 'graph', label: 'Threat Graph & Drawer', icon: Network },
+    { id: 'trace', label: 'Relay Hops Trace', icon: Server },
+    { id: 'auth', label: 'Cryptographic Auth', icon: Key },
+    { id: 'headers', label: 'RFC 5322 Headers', icon: Terminal },
+    { id: 'body', label: 'Raw Artifacts', icon: FileText },
   ];
 
   return (
     <div className="space-y-6">
-      {/* Top Incident Summary Card */}
+      {/* Top Incident Summary Banner */}
       <div className="glass-panel p-6 rounded-2xl border border-slate-800 relative">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           {/* Left Email Metadata */}
@@ -71,7 +72,7 @@ export const AnalysisPage: React.FC<AnalysisPageProps> = ({ email, onNavigate })
           <div className="flex flex-wrap sm:flex-nowrap items-center gap-6 border-t lg:border-t-0 lg:border-l border-slate-800 pt-4 lg:pt-0 lg:pl-6">
             <RiskGauge score={email.risk_score} size="lg" />
 
-            <div className="flex flex-col gap-2 min-w-[170px]">
+            <div className="flex flex-col gap-2 min-w-[170px] font-mono">
               <button
                 onClick={() => setShowReportModal(true)}
                 className="flex items-center justify-center gap-1.5 px-4 py-2 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 text-white text-xs font-bold rounded-xl shadow-lg transition"
@@ -91,6 +92,38 @@ export const AnalysisPage: React.FC<AnalysisPageProps> = ({ email, onNavigate })
                 {caseCreated ? <CheckCircle2 className="w-4 h-4 text-emerald-400" /> : <Briefcase className="w-4 h-4" />}
                 {caseCreated ? 'Attached to Case #SIH01' : '+ Escalate to Case'}
               </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Incident Campaign Timeline & Exposure Gantt (Reference Design 10) */}
+      <div className="glass-panel p-4 rounded-xl border border-slate-800 font-mono text-xs space-y-2">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2 text-slate-300 font-bold uppercase text-[11px]">
+            <Calendar className="w-4 h-4 text-cyan-400" />
+            <span>Incident Exposure Window & Timeline</span>
+          </div>
+          <span className="text-[10px] text-cyan-400">First Ingested: {new Date(email.created_at).toLocaleString()}</span>
+        </div>
+
+        {/* Gantt Bars */}
+        <div className="space-y-1.5 pt-1">
+          <div className="flex items-center gap-2">
+            <span className="w-24 text-[10px] text-slate-500 uppercase">Exposure:</span>
+            <div className="flex-1 bg-slate-900 h-5 rounded-lg border border-slate-800 relative overflow-hidden flex items-center">
+              <div className="absolute left-[10%] right-[30%] bg-blue-900/60 border border-blue-500/40 h-full rounded flex items-center px-2 text-[9px] text-blue-300 font-bold">
+                Window of Exposure (MTA Ingest to SOC Alert)
+              </div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <span className="w-24 text-[10px] text-slate-500 uppercase">Campaign:</span>
+            <div className="flex-1 bg-slate-900 h-5 rounded-lg border border-slate-800 relative overflow-hidden flex items-center">
+              <div className="absolute left-[20%] right-[10%] bg-red-900/60 border border-red-500/40 h-full rounded flex items-center px-2 text-[9px] text-red-300 font-bold">
+                Campaign Active: Spoofed Identity & Phishing Drop
+              </div>
             </div>
           </div>
         </div>
@@ -186,35 +219,36 @@ export const AnalysisPage: React.FC<AnalysisPageProps> = ({ email, onNavigate })
         </div>
       )}
 
-      {/* Tab 2: Authentication */}
-      {activeTab === 'auth' && (
-        <div className="space-y-6">
-          <AuthVerificationCard auth={email.authentication} />
-        </div>
+      {/* Tab 2: Hypothesis Investigation Tree (Reference Image 9) */}
+      {activeTab === 'hypothesis' && (
+        <HypothesisInvestigationTree />
       )}
 
-      {/* Tab 3: Transmission Hops */}
+      {/* Tab 3: Threat Graph & Node Details Drawer (Reference Image 7) */}
+      {activeTab === 'graph' && (
+        <InteractiveThreatGraph graphData={email.graph_data} />
+      )}
+
+      {/* Tab 4: Transmission Hops */}
       {activeTab === 'trace' && (
         <div className="glass-panel p-6 rounded-2xl border border-slate-800">
           <RelayTimeline hops={email.hops} />
         </div>
       )}
 
-      {/* Tab 4: Threat Graph */}
-      {activeTab === 'graph' && (
-        <div>
-          <InteractiveThreatGraph graphData={email.graph_data} />
+      {/* Tab 5: Authentication */}
+      {activeTab === 'auth' && (
+        <div className="space-y-6">
+          <AuthVerificationCard auth={email.authentication} />
         </div>
       )}
 
-      {/* Tab 5: Headers */}
+      {/* Tab 6: RFC 5322 Headers */}
       {activeTab === 'headers' && (
-        <div>
-          <HeaderInspector email={email} />
-        </div>
+        <HeaderInspector email={email} />
       )}
 
-      {/* Tab 6: Raw Evidence */}
+      {/* Tab 7: Raw Evidence */}
       {activeTab === 'body' && (
         <div className="glass-panel p-6 rounded-2xl border border-slate-800 space-y-4 font-mono text-xs">
           <div className="flex items-center justify-between pb-3 border-b border-slate-800">
@@ -227,7 +261,7 @@ export const AnalysisPage: React.FC<AnalysisPageProps> = ({ email, onNavigate })
             <p><span className="text-slate-500">SHA-256:</span> {email.sha256}</p>
             <p><span className="text-slate-500">Size:</span> {email.file_size_bytes} Bytes</p>
             <p><span className="text-slate-500">Ingested:</span> {email.created_at}</p>
-            <p><span className="text-slate-500">Links:</span> {email.urls?.length || 0} embedded hyperlinks extracted</p>
+            <p><span className="text-slate-500">Extracted URLs:</span> {email.urls?.length || 0} links</p>
           </div>
         </div>
       )}
