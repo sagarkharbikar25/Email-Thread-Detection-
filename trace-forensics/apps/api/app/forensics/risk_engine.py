@@ -1,11 +1,12 @@
 from dataclasses import dataclass
 from typing import List, Dict, Any, Optional, Tuple
 from app.forensics.email_parser import ParsedEmail
+from app.ml.nlp_phish_scorer import nlp_scorer
 
 @dataclass
 class RiskSignal:
     signal_id: str
-    category: str  # AUTH, HEADER, DOMAIN, INTEL, CONTENT, ATTACHMENT
+    category: str  # AUTH, HEADER, DOMAIN, INTEL, CONTENT, ATTACHMENT, ML_NLP
     severity: str  # CRITICAL, HIGH, MEDIUM, LOW, INFO
     weight: int
     title: str
@@ -19,6 +20,34 @@ def build_signals(
 ) -> List[RiskSignal]:
     """Generate granular forensic risk signals from parsed attributes."""
     signals: List[RiskSignal] = []
+    
+    # 0. ML NLP Content & Urgency Evaluation (Person 3 Deliverable)
+    nlp_res = nlp_scorer.analyze_content(parsed.subject or "", parsed.body_text or "")
+    if nlp_res.get("is_suspicious_content"):
+        prob = nlp_res.get("ml_phish_probability", 0)
+        intent = nlp_res.get("predicted_intent", "SUSPICIOUS")
+        feat = nlp_res.get("detected_features", {})
+        
+        weight = int(prob * 35)
+        severity = "CRITICAL" if prob >= 0.75 else "HIGH" if prob >= 0.50 else "MEDIUM"
+        
+        triggers = []
+        if feat.get("urgency_triggers"):
+            triggers.extend(feat["urgency_triggers"])
+        if feat.get("credential_prompts"):
+            triggers.extend(feat["credential_prompts"])
+        if feat.get("financial_keywords"):
+            triggers.extend(feat["financial_keywords"])
+            
+        signals.append(RiskSignal(
+            signal_id="ml_nlp_phish_intent",
+            category="CONTENT",
+            severity=severity,
+            weight=weight,
+            title=f"NLP Threat Classifier: {intent.replace('_', ' ').title()}",
+            description=f"ML content analysis detected strong social engineering keywords with {int(prob * 100)}% confidence.",
+            evidence=f"Keywords: {', '.join(triggers[:4]) if triggers else 'Social engineering markers'}"
+        ))
     
     # 1. Authentication Signals
     spf_res = auth_result.get("spf_result", "NONE").upper()

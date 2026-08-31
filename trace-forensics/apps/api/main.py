@@ -15,7 +15,7 @@ import logging
 
 from app.core.config import settings
 from app.core.database import init_db
-from app.api import auth_router, emails_router, cases_router, evidence_router
+from app.api import auth_router, emails_router, cases_router, evidence_router, reports_router
 
 # Configure logging
 logging.basicConfig(
@@ -59,6 +59,7 @@ app.include_router(auth_router.router, prefix=settings.API_V1_STR)
 app.include_router(emails_router.router, prefix=settings.API_V1_STR)
 app.include_router(cases_router.router, prefix=settings.API_V1_STR)
 app.include_router(evidence_router.router, prefix=settings.API_V1_STR)
+app.include_router(reports_router.router, prefix=settings.API_V1_STR)
 
 @app.get("/health", tags=["system"])
 async def health():
