@@ -1,0 +1,2429 @@
+Delivered-To: sagarkharbikar25@gmail.com
+Received: by 2002:a05:6638:88d6:b0:5ec:a371:49aa with SMTP id v22csp2988030jag;
+        Mon, 31 Aug 2026 05:45:58 -0700 (PDT)
+X-Received: by 2002:a05:6871:707:b0:449:bccf:bb67 with SMTP id 586e51a60fabf-46835a0766bmr29113885fac.5.1788180358344;
+        Mon, 31 Aug 2026 05:45:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1788180358; cv=none;
+        d=google.com; s=arc-20260327;
+        b=NaN+WzpXQHmk+xRgzT+Hjr9ze5fmfwddMzl6xxG+2xChjLMNgnOHWKuZ3D7JKa424R
+         ZM/O07+t7258+lwXoJ8FqH+4UPQlwdpZhfNFLYvlaAlsEIFpsKlRAlR0yAtL7p6yqRnI
+         UQERIkdI2Dg5Bg2HgjrmxlvNY6jBAjENOdRONBNNqmC6yoj2s8hHC588w/oVvdfb5qSp
+         owBi8asUwTNrIxiSkRgrEoK4pCkjn+4LFzWzDOJbupaYEXjzsrCdShcXfsD1xulFzaqv
+         0jWWThKEh/PXJoRFuiQQEL9rA0EnzCSl/a5cu8KgO4pP5ZCMgbJUbXL8g01jISvMF7PG
+         rIDA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=to:list-unsubscribe-post:list-unsubscribe:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=dkWq372hTHU0s7aBr2GGFgVayjTcZPJhSOZ1TyHhebs=;
+        fh=H7y0VW4hKHY9U1oXMkUQdds/hzF1miZWtZgsdTIzbHM=;
+        b=e9sMXsWzcUIRU+iPKbi16Qyct+dTATxBChJIK1wJPU00bBEG6SgnuQ55LGrpZCQ2mt
+         TzYLifE6WWAp54dIzXHbbdbEaPaDm70NCxTQD8KLYXOSYk8yqEMbP7ryrkZnWhMHpPh6
+         508Cwk903KuPtitjYdAWLOmvTzgUXcHUUudy5bzo2WjYtA9ZhiESa9lXBg5H/J4kxVl4
+         yWuIl/1BFnK7i2Nb/i8tGqZnoct++xEpeJiJFAn2l/opbwwiDd9BVAyOJWyj5mVBMqQh
+         IyKyS/+3qVU+aScdMP4Oa0be4l04KB3MOd7cpm7UZMbEvBlt5FH120uWLH6AmXDJjxYg
+         knew==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.meetup.com header.s=s1 header.b=hRLjRHVR;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=xdttBSy+;
+       spf=pass (google.com: domain of bounces+28368967-97a2-sagarkharbikar25=gmail.com@e.email.meetup.com designates 167.89.53.236 as permitted sender) smtp.mailfrom="bounces+28368967-97a2-sagarkharbikar25=gmail.com@e.email.meetup.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=meetup.com
+Return-Path: <bounces+28368967-97a2-sagarkharbikar25=gmail.com@e.email.meetup.com>
+Received: from o4240.e.email.meetup.com (o4240.e.email.meetup.com. [167.89.53.236])
+        by mx.google.com with ESMTPS id 586e51a60fabf-468a5f0069asi12819933fac.213.2026.08.31.05.45.58
+        for <sagarkharbikar25@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 31 Aug 2026 05:45:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+28368967-97a2-sagarkharbikar25=gmail.com@e.email.meetup.com designates 167.89.53.236 as permitted sender) client-ip=167.89.53.236;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.meetup.com header.s=s1 header.b=hRLjRHVR;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=xdttBSy+;
+       spf=pass (google.com: domain of bounces+28368967-97a2-sagarkharbikar25=gmail.com@e.email.meetup.com designates 167.89.53.236 as permitted sender) smtp.mailfrom="bounces+28368967-97a2-sagarkharbikar25=gmail.com@e.email.meetup.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=meetup.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=email.meetup.com;
+	h=content-type:date:from:mime-version:subject:list-unsubscribe:
+	list-unsubscribe-post:to:cc:content-type:date:feedback-id:from:subject:to;
+	s=s1; t=1788180357;
+	bh=dkWq372hTHU0s7aBr2GGFgVayjTcZPJhSOZ1TyHhebs=;
+	b=hRLjRHVRiH5lIRPiz7e3WSh2TsblaXW5LZbgnIbVbjxxgWB91IMakqu/5xgUwV7Na1Ir
+	fatjYsoHx2ldUBUxjDCTGnB+zmnkTCGVB24AC/XYF96kyeHw7ONgC20L13amcxQRR5YyGq
+	IdjTSqAfe7Z8RAbtkJhbbrKf3l3AY/fZiWbY1FLrVsUEEMjDeCLwBFJ0SHWD9BE1BKj/bm
+	F9ss8/x58PHDJGZenTDrNloHBKB5i7xG8RahOFwgmHZWR4ojTOLt8+wjczDHTIj6DTANis
+	9hJhDQqzlghQeapsOgiYbKOUcEL85iQjccnvmVKTc34VYxKXuuW7uLgtPaBbVGSg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:date:from:mime-version:subject:list-unsubscribe:
+	list-unsubscribe-post:to:cc:content-type:date:feedback-id:from:subject:to;
+	s=smtpapi; t=1788180357;
+	bh=dkWq372hTHU0s7aBr2GGFgVayjTcZPJhSOZ1TyHhebs=;
+	b=xdttBSy+ceYxXckOYYd+778IMeFSHVBghFZlbCAnI4xjxdmYTeOFpKF+MeOu62Va0IWo
+	Svq7CCkiE8NfhqFV14nowKdqw0f6jqt4djG4ZimOHBdsz9se6xrr6o1fANeiWURfI2e0s8
+	afRJJqgZNdwN46c05fCDrWxo3WlSRb4Wg=
+Received: by recvd-545987cbf7-8d7pr with SMTP id recvd-545987cbf7-8d7pr-1-6A957785-44
+	2026-08-31 12:45:57.788755924 +0000 UTC m=+2915605.536181622
+Received: from MjgzNjg5Njc (unknown)
+	by geopod-ismtpd-5 (SG) with HTTP
+	id DDLsvibvQkWbprZMOjCLdw
+	Mon, 31 Aug 2026 12:45:57.778 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=f09f3f8fe8c2d8764e860e6d686066e7386c493d58920a4813c805a09218
+Date: Mon, 31 Aug 2026 12:45:57 +0000 (UTC)
+From: "AWS SBG at Ratan Tata Maharashtra State Skills U. - Nagpur"
+	<info@email.meetup.com>
+Mime-Version: 1.0
+Message-ID: <DDLsvibvQkWbprZMOjCLdw@geopod-ismtpd-5>
+Subject: =?UTF-8?B?8J+ThQ==?= Sunday: Join 125 Members at "AWS Cloud
+ Practitioner Voucher Challenge"
+List-Unsubscribe:
+ <https://api.meetup.com/enqueue/notifs-oneclick-unsubscribe?bid=6a478c566b3b88005b522a2c&code=event_reminder&group_id=38266171&canvas=event_reminder_seven_day>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+X-SG-EID: 
+ =?us-ascii?Q?u001=2EmRONYpJRVsHYXM23fco6Noc2vSt3xqIRy2Uxy4Hk33DqgzqDH5Qh0b2sA?=
+ =?us-ascii?Q?U44LZhx9Ei3i8AMKv6rWAvW9PbieJ45Fp+PC35R?=
+ =?us-ascii?Q?LYjCajDMHrh1CS7wflyQxSj+I57IzCq6JXyzFWF?=
+ =?us-ascii?Q?pBK3RLRTT3EvTQ4qo95t8HnjUByYDad2gbYfN4I?=
+ =?us-ascii?Q?9ulXcIsrVVeE69O=2Fo9InQkFtqr=2F7I=2FmT5PmdV03?=
+ =?us-ascii?Q?71wwGlkHIwj4JLb3AFVfCq6QOKJmPtp8Ue9QOjV?=
+ =?us-ascii?Q?r1UqtdFfjC5RmVDCGunx3MDA=2F4bfdydYdMDJQlt?=
+ =?us-ascii?Q?LqYs0UkgvROG7ZjS+jsU89uqGPK3B?=
+X-SG-ID: 
+ =?us-ascii?Q?u001=2ESdBcvi+Evd=2FbQef8eZF3BpTL9BgbK5wfSJMJGMsmprDrjDW6011yC6XOo?=
+ =?us-ascii?Q?3uya5MXbv=2FU7+Re1L4uOc5BDwZr3T6xmpKaid3I?=
+ =?us-ascii?Q?uDpY1kMLPUjf1qKYoGfU6Uh18q6Gf4wCRpKjAJJ?=
+ =?us-ascii?Q?9UKrWxvdnAHunJwu6K1wcBJRYH8OWtoX070BbuY?=
+ =?us-ascii?Q?so0VNnSb6UYayQtz=2F=2FLbvuqEv=2FqAe7IR6WDjgYk?=
+ =?us-ascii?Q?23iH8u65QLHYy426LypG6bBAWlD5Vu6JKmkMYd9?=
+ =?us-ascii?Q?z2k7cHt9BKVKWD5QUkLJG5naG2qfc3wGlQhx=2FX5?=
+ =?us-ascii?Q?HYk1E5quSCaTrLcK7LjF5+QxvT1cV19ni=2FFuYUE?=
+ =?us-ascii?Q?bKV2yYKoBCWFId0mI3Z=2F4gyc6rVBGugk1BDhUC3?=
+ =?us-ascii?Q?siySK=2FnGTKV0QaDj5zhnDg2aeVtQp+jnIrCR+0L?=
+ =?us-ascii?Q?0aB=2FnbvZwcvVUPTEzK0meiQ1VzxtZj1Xvwce2B8?=
+ =?us-ascii?Q?CXIJ5V=2FC5xvueVK9WqoOptKQfRbytxrGvY13X0Y?=
+ =?us-ascii?Q?g0AT=2FLcOA8YWqQiYQLocXmJDyia68k3hfu6DgWy?=
+ =?us-ascii?Q?0zaT7oDWb+NghkGtmDQwASwSREcDlR=2Fk9isXvEp?=
+ =?us-ascii?Q?ICM0uPKa4OEcPHzWZUfxR=2FCoOCwQ7KCrnw=3D=3D?=
+To: sagarkharbikar25@gmail.com
+X-Entity-ID: u001.O+xcPHZVQx6lie2k23VZag==
+
+--f09f3f8fe8c2d8764e860e6d686066e7386c493d58920a4813c805a09218
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=iso-8859-1
+Mime-Version: 1.0
+
+
+
+AWS SBG at Ratan Tata Maharashtra State Skills U. - Nagpur
+invites you to keep connecting=20
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ Meetup
+
+
+
+
+
+
+
+
+    Meetup=20
+( http://clicks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0Gn=
+Fi1zzMJ-2FAp8-2FvJUYHmulqAOVKs3h2sPLMiI5s3cN6De1-2Ba-2BCgIbXczsPHtIzVrSYqFj=
+MJJ4NTPW3r20qEhcjAfi3bEAyNNJBhm4Ko1ggEgLc-2Fx3CDhVEWwI-2BYNtRnPZbgG5iuMBkmn=
+RHu7uXRSIBnGML2Bqd8eJerfUUui-2FQ1L7qMILG6B6OyFRhlg-3D-3D68q3_sGnPqz2fTiTdu9=
+SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw4=
+8w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgEc=
+9YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfWK=
+m2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5My=
+OGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7P=
+umCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2F=
+jvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsii=
+z4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1N=
+pRyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2BmDxlfBwmfj4eCaOmO5=
+dYoH7GLYSWtdchIz7cbb82bgaxPCQmkzvWImEITJXrMtl5SkIJV2l7-2FbM-2FKYfC3L-2BPRKz=
+U-2FA3x-2Bpfn-2FGNigx8V5H8Q1k88TC-2FkilPxOGUXwleto )
+     =20
+
+
+
+
+
+
+
+
+
+Sunday  >
+AWS Cloud Practitioner Voucher Challenge (
+http://clicks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi=
+1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfSCI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkW=
+FijWpmqJ7BkLi1KSOzZK9-2B-2Ftum6F6kQ3o8mHGYHbKN-2B1tIXcdIz7go73aUKFQ-2FZpgQz=
+k13QcdkTBn-2F7JlyV9rHlvI8yfgp2S-2FbVA-2BBXql8aLnZvYuFZsIgiXXaqPVA2Rjs965ynS=
+lODEUJJY0laxOigS-2Fj30IE2nl-2Fa4LcewV-2FSnnZj8w-3D-3DwrrN_sGnPqz2fTiTdu9SJO=
+mTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw48w6=
+mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgEc9YH=
+SksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfWKm2E=
+6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5MyOGL=
+4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7PumC=
+z3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2FjvB=
+4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsiiz4G=
+LjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1NpRy=
+PF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2Bm3WYhvr67UiV-2FMpEErU=
+mY6TBLfNge9obD0ACJseYM7spI8xaDRqKgRbfhmYkbyWe9PqwMpKMGy9IVDp-2FQ27IghpYMCNR=
+0QgWT42q5KoqYMVfH7aNtLGq3rgAa3zbFAHgH
+)  =20
+AWS SBG at Ratan Tata Maharashtra State Skills U. - Nagpur
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Sunday, September  6, 2026
+
+ 5:00 PM
+Asia/Kolkata
+
+
+Online event
+
+
+ Link visible for attendees
+
+
+
+
+
+     Add to calendar (
+http://clicks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi=
+1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfSCI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkW=
+FijWpmqJ7BkLi1KSOzZK9-2B-2Ftum61OjLamPFOW6wYB6yVcqIK6c8I95nFf9HNLOxgQuO7uYz=
+cP9X5DbyK7HWBFnqTG70BGlwy4dBZu1HWUihAQthcw-3D-3DIr75_sGnPqz2fTiTdu9SJOmTvrL=
+Q-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw48w6mjSrQ=
+AUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgEc9YHSksWd=
+loS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfWKm2E6u8Eu=
+4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5MyOGL4OX-2=
+F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7PumCz3Z-2=
+BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2FjvB4WDor=
+J2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsiiz4GLjWCr=
+SuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1NpRyPF134=
+E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2BmQZpO3Ae98eyRrT0cdpKEl45jm=
+ds-2F7vqeoP2-2BBuGGP-2BKI4g6yFu02GRY-2BN7-2B0YTyktKsJFxpLHqR7-2BT0oEjljqie1=
+LhkRNptNSn5bLpMDgffKbgjxQenT3cSpnOTdM0-2Fc )
+ Add to calendar
+ (
+http://clicks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi=
+1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfSCI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkW=
+FijWpmqJ7BkLi1KSOzZK9-2B-2Ftum61OjLamPFOW6wYB6yVcqIK6c8I95nFf9HNLOxgQuO7uYz=
+cP9X5DbyK7HWBFnqTG70BGlwy4dBZu1HWUihAQthcw-3D-3D3fa3_sGnPqz2fTiTdu9SJOmTvrL=
+Q-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw48w6mjSrQ=
+AUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgEc9YHSksWd=
+loS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfWKm2E6u8Eu=
+4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5MyOGL4OX-2=
+F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7PumCz3Z-2=
+BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2FjvB4WDor=
+J2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsiiz4GLjWCr=
+SuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1NpRyPF134=
+E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2BmXrvCr1H-2F47JGDInZzurUPsY=
+2jEHFf-2ByEI4dOXjsyCOJbxMvA30OvuRLrNvsxmrdxXeuwMz-2F36fr4D6oyd5zYJnlUPkuxjT=
+sQChTspy6ffdG3-2B9oOh7HDb-2F0NiFOXfb3d )
+
+
+
+RSVP
+today (
+http://clicks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi=
+1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfSCI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkW=
+FijWpmqJ7BkLi1KSOzZK9-2B-2Ftum6F6kQ3o8mHGYHbKN-2B1tIXcdIz7go73aUKFQ-2FZpgQz=
+k13QcdkTBn-2F7JlyV9rHlvI8yfgp2S-2FbVA-2BBXql8aLnZvYuFZsIgiXXaqPVA2Rjs965ynS=
+lODEUJJY0laxOigS-2Fj33vpfiSeSuJRRV3Yk7BZmH2UdY6UFWbgBRCWr1V0t6-2FQP0yAFCr6W=
+kEqSwTSqut-2FhpVVolGovTF1uhlNI6gZgiLZ-2Fgq2fUbOHfz7Uy39Y5hSY-2BFChfYzla7dYn=
+PrI6nFKVE4D_sGnPqz2fTiTdu9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziH=
+ml42Zj3nA84eBbiAmYxORMPsw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqq=
+bTHICniL-2FWEAreBsk8TMYgEc9YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8a=
+VFoSKLRcj4MDwEogegUOKaDfWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2G=
+we7kuRbqADEsBqLqjjs3EYR5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9M=
+qdc-2F73NfjkE2SgAeUJQUuD7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HK=
+iRYhQzEdElleVxGAmApR2in-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6=
+e2CVBXPXXKTALzsYyehgrNwsiiz4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu=
+01KWMkgiwlLz8cdrEHsVk5kq1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8As=
+v1QS3-2BmxWHX5ngFf3fqMxAJVhqaEyxnHwrTaN5hHjfOS5DX7Pkg3y2Zlgja53iBp-2FicHSL2=
+fVv35OUNf0YBnJFQVQ7NkHTYECSad4i73O6aZ-2Bw-2BuVT5Y8pgSpwSAquAiD1pDdxw )
+
+
+
+
+
+
+
+125
+Members going, including:
+
+
+
+
+
+
+
+
+
+          (
+http://clicks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi=
+1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfSCI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkW=
+FijWpmiLM0YNNvGV3Q-2B4oTavLXudOcPu-2BmPKCMS2w9IRwyGkg-3D-3Dm9s1_sGnPqz2fTiT=
+du9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMP=
+sw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMY=
+gEc9YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaD=
+fWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR=
+5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUu=
+D7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in=
+-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNw=
+siiz4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5k=
+q1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2Bmc6YUqMgujLUSyJ=
+sDlsDMMYVx77GUQJizNDWvTr-2Bfl1GNJdI6Z05zcd6-2F7sqeyYpbrqvL4KYMa-2B1FMrAjWeS=
+Ygsk80iE21MNshAXJvqN8UKYZjVfhtO1bpkv2pC3ElNQZ )
+Aryan Vijaykar (
+http://clicks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi=
+1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfSCI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkW=
+FijWpmiLM0YNNvGV3Q-2B4oTavLXudOcPu-2BmPKCMS2w9IRwyGkg-3D-3DokTS_sGnPqz2fTiT=
+du9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMP=
+sw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMY=
+gEc9YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaD=
+fWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR=
+5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUu=
+D7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in=
+-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNw=
+siiz4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5k=
+q1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2Bm5uH03cJ4TEekKM=
+6XWyR-2F4d1r-2B6YpKIMxqvI7n03p8V-2B-2FhzUKsaDZjYS1P56nimUR51zW5TU2YcTMpe9C-=
+2BlKVkoDrE-2B9pNUJRWB9cY1RFZsLOFys3z9dUREeOcjJ9jMLi )
+
+
+
+
+
+
+
+          (
+http://clicks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi=
+1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfSCI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkW=
+FijWpmiLM0YNNvGV3Q-2B4oTavLXuFfVfBpPipsgt695dv-2BOOcA-3D-3D_x31_sGnPqz2fTiT=
+du9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMP=
+sw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMY=
+gEc9YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaD=
+fWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR=
+5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUu=
+D7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in=
+-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNw=
+siiz4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5k=
+q1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2BmXDlSyv9pR0s9nv=
+ZAWd2MdcnZ-2FHlTqLoIko5f68h-2BXcbWfK1V3DgvD5fSwNCjpbGEiXlbK294y8hbuLTibAO3a=
+xPvPDvMNLyVhPWiYl6Z9ewzWUxkIiARCJVwkKiTV-2Fah )
+mrigeshkoyande (
+http://clicks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi=
+1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfSCI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkW=
+FijWpmiLM0YNNvGV3Q-2B4oTavLXuFfVfBpPipsgt695dv-2BOOcA-3D-3DJAVr_sGnPqz2fTiT=
+du9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMP=
+sw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMY=
+gEc9YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaD=
+fWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR=
+5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUu=
+D7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in=
+-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNw=
+siiz4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5k=
+q1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2BmyzURsw4fngJ1vA=
+-2BdHh0TxSfGO14wPpH5UAf3tXt-2Bb8Xbys2LXBtbI1oeXCOe50KwNw7sozWibJPWqFQXs5HYX=
+VxYWhdCGFAMHShswGO0-2BmNUm88UFx1b8Hp0FkD9XXzX )
+
+
+
+
+
+
+
+          (
+http://clicks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi=
+1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfSCI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkW=
+FijWpmiLM0YNNvGV3Q-2B4oTavLXusdkbGFpQICaXDz-2FyntAyUQ-3D-3D5vks_sGnPqz2fTiT=
+du9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMP=
+sw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMY=
+gEc9YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaD=
+fWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR=
+5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUu=
+D7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in=
+-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNw=
+siiz4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5k=
+q1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2Bmh8eMI8BzOlf8NF=
+Bp08RgLaSUqnA0knGwQjoTM8Qk-2FXOTGTfVyjjLzUppN2q71kvS2KxDEh-2BGCtONP-2BYDrJp=
+TymwC-2FntW27iCLy55PZ-2BSwhL5VY2WM0wj6sWJkxyoVwn3 )
+Baranitharan K C (
+http://clicks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi=
+1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfSCI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkW=
+FijWpmiLM0YNNvGV3Q-2B4oTavLXusdkbGFpQICaXDz-2FyntAyUQ-3D-3DsDgF_sGnPqz2fTiT=
+du9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMP=
+sw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMY=
+gEc9YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaD=
+fWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR=
+5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUu=
+D7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in=
+-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNw=
+siiz4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5k=
+q1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2BmFE2OvhtFXd2TWc=
+8KKvHwetHIER8pLjczqzja268jXIbflMogkQxyHdq-2BsZsCLKKAXr7L8Zq4JJh7tKBBX-2B94h=
+UkFKd2ylwm-2FYt61XIqKN8ukQlAJ8T-2BjZBbcqv-2B0Pk7m )
+
+
+
+
+
+
+
+          (
+http://clicks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi=
+1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfSCI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkW=
+FijWpmiLM0YNNvGV3Q-2B4oTavLXu9zbb0Rr5H2LwbGU0M3i7Qw-3D-3Del5z_sGnPqz2fTiTdu=
+9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw=
+48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgE=
+c9YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfW=
+Km2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5M=
+yOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7=
+PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2=
+FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsi=
+iz4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1=
+NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2BmyM988PsTJxm-2BWw=
+idCG95SoFd0ziwdz-2B1yQ82llSawUSdWrt2TIHlS408rhsfKgVuNZFI3W-2F38HL22-2FoLkBI=
+XtDcc9UnHX3Q5jd8hu-2B3EmG5IXLGET5LtfDgphUs9hOKZ )
+MD ABDULLAH (
+http://clicks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi=
+1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfSCI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkW=
+FijWpmiLM0YNNvGV3Q-2B4oTavLXu9zbb0Rr5H2LwbGU0M3i7Qw-3D-3D9Ian_sGnPqz2fTiTdu=
+9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw=
+48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgE=
+c9YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfW=
+Km2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5M=
+yOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7=
+PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2=
+FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsi=
+iz4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1=
+NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2BmgsRAhXPbMB-2Brgr=
+GrxiwXqffrUpLoPzq1zMX-2B7KXy8c7j5VfS1-2FCy4rcIxmNDA7qUPPGc5HAxpE817bBwLe1Wg=
+NNA1PSC9SK4R3JK-2B33Lbi7U4wo002lQf0arPDqEU5hY )
+
+
+
+
+
+
+
+          (
+http://clicks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi=
+1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfSCI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkW=
+FijWpmiLM0YNNvGV3Q-2B4oTavLXurPNRci3POfmXVAHzGTPJNg-3D-3D4VOg_sGnPqz2fTiTdu=
+9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw=
+48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgE=
+c9YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfW=
+Km2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5M=
+yOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7=
+PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2=
+FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsi=
+iz4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1=
+NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2BmqrYfQxOViLvFYHRz=
+YKoO2OlfNoiyOBCEAQ9KiVlTHFmWSy1S19qh8fpEaKakc92ru9ji6jsPwDBU7EdfSFvBdeaWkIU=
+vYdtIJxGc5v70pE4rvXjg23711wwtghCiNYL6 )
+Sivakumar G (
+http://clicks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi=
+1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfSCI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkW=
+FijWpmiLM0YNNvGV3Q-2B4oTavLXurPNRci3POfmXVAHzGTPJNg-3D-3DhuoQ_sGnPqz2fTiTdu=
+9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw=
+48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgE=
+c9YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfW=
+Km2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5M=
+yOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7=
+PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2=
+FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsi=
+iz4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1=
+NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2BmIRV6gBb5OzthS6Xt=
+VM9ZbAs-2B3YDgMfgkgA4cPxqno2aEo-2BCYZIg0QEBFw7vz6zBNhCkTYINF3QbTk8TLof9vUkr=
+CPpMg18vc2frn5cFi0kCgDsAlJkGPV-2F70s3lw5CR3 )
+
+
+
+
+
+
+
+          (
+http://clicks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi=
+1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfSCI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkW=
+FijWpmiLM0YNNvGV3Q-2B4oTavLXutMAH648nvgSV1o648V6VIQ-3D-3DVbE1_sGnPqz2fTiTdu=
+9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw=
+48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgE=
+c9YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfW=
+Km2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5M=
+yOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7=
+PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2=
+FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsi=
+iz4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1=
+NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2BmCyJ8RAURN99IpbD-=
+2FyJmdL2w84OCL4G4TPsEHleINvE5Hny-2FDY7hOlj-2FPUCxZC5P5-2BTQrc1Iy1POcOQD1Kns=
+UgV0WlACAoxysLeBmYu0bFkdKODXI1pVHbMQHf4D71ddA )
+bharatbhute (
+http://clicks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi=
+1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfSCI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkW=
+FijWpmiLM0YNNvGV3Q-2B4oTavLXutMAH648nvgSV1o648V6VIQ-3D-3DHrSO_sGnPqz2fTiTdu=
+9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw=
+48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgE=
+c9YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfW=
+Km2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5M=
+yOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7=
+PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2=
+FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsi=
+iz4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1=
+NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2BmVW3Yo6laE6x-2FkK=
+gkWZP4CbS-2BU7OMhcGZVNl6BWnnM2m4bWPLaDij8P-2F18Ie1-2B3v54Sj02Klxylim-2FRp8o=
+bUNAQYyIlvVZVYXIW-2FV9Dqs6hT6qyEXrlWtzJwjVh331Ghb )
+
+
+
+
+
+
+
+Event
+description:
+Ready to become AWS Certified?
+Join the AWS Cloud Practitioner Voucher Challenge organized by AWS Student =
+Builder Group (AWS SBG) at Ratan Tata Maharashtra State Skills University, =
+Nagpur.
+This 2-h...
+
+ Learn more
+ (
+http://clicks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi=
+1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfSCI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkW=
+FijWpmqJ7BkLi1KSOzZK9-2B-2Ftum6SvgriYW9Sdd1o58j1ivxPQ-3D-3DlnOL_sGnPqz2fTiT=
+du9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMP=
+sw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMY=
+gEc9YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaD=
+fWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR=
+5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUu=
+D7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in=
+-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNw=
+siiz4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5k=
+q1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2BmnxV9zYeDydfKpt=
+B7TUSHEKRfco1Ry8KFJBHN-2F-2BamcJo-2BtxJ0DqgCFrA15rCWXF-2BBf-2BpVsIZXmC0LUxH=
+hCZIsNsReunwnJIwwx4i7rPNrO5xN9jVPNg6drvgX4A-2Be5iEn )
+
+
+
+
+ More events from this group
+ =20
+( http://clicks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0Gn=
+Fi1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfSCI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmO=
+kWFijWpnOxaZLOb-2Fi-2FAZ8-2BrO-2BnuVD5Jfmlg8o0QYRd-2F-2BD9g0K7MpXlwiTz1u67-=
+2FnkuBYTeTmaZGCPYGPrRW3R6O90HpCAQW90C7LXPjoCsXdFvcKQGbtNwWnc0CJxJeeToHSuDD-=
+2FL9UkC8Jn8ww0Ro8FPuNWWNQhq_sGnPqz2fTiTdu9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2Bk=
+ZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65=
+h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgEc9YHSksWdloS8POLN6eTiIY2U9wxhhrol1=
+zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFr=
+BF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx=
+3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BE=
+e6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu=
+8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsiiz4GLjWCrSuM71SiL6BakHgi92EYvg-2FP=
+zQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-=
+2FjIBja-2FYpa8Asv1QS3-2BmG-2FyOU9y3-2FsbZrU9thdKTGyy34n5HxR0Iba9Fd8Ex2XSOCv=
+Q5ps-2F7tEXhV-2FQKPKciCwm3Rt5TJDC2f79b8xuUpSPDheUZd0-2FW3R-2FuQdTy67zyQn-2B=
+QNmjb4pnTE20qc1oV )
+  =20
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SEP
+ 5
+Introduction to AWS Open Source (
+http://clicks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi=
+1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfSCI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkW=
+FijWpmqJ7BkLi1KSOzZK9-2B-2Ftum65QeKk94mJ2zQ6VfnY0mNTJez-2FZUKvE5rCkZB8OrGNh=
+3ntSW8r51SgLV3p-2B5uTmVN9yd3DzgGC5nGm51g8s1Y2t-2BnAc4sfqCaGPJl-2F-2FvcN-2BR=
+9sSdzX9U3i0yiAscVoF7X-2Baf63qtmnYes-2BQdz2kQw-2Fg-3D-3DyogD_sGnPqz2fTiTdu9S=
+JOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw48=
+w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgEc9=
+YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfWKm=
+2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5MyO=
+GL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7Pu=
+mCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2Fj=
+vB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsiiz=
+4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1Np=
+RyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2BmHtkoWO3mUhFjO5nz6G=
+EBudjVQj877rdKh18Pk5hPBnzrY8O-2BcCFLdCnnXct1p4pFH7LBCywDqRY7lgCRVXJ6q9Lp3Be=
+SSXcjB1puAYvWGGPSxpDVbZJCdzPRT2VxFETG )
+
+
+Saturday, September  5, 2026
+ 3:00 PM
+ =B7
+
+
+
+
+75 attending
+
+
+
+
+
+RSVP   (
+http://clicks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi=
+1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfSCI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkW=
+FijWpmqJ7BkLi1KSOzZK9-2B-2Ftum65QeKk94mJ2zQ6VfnY0mNTJez-2FZUKvE5rCkZB8OrGNh=
+3ntSW8r51SgLV3p-2B5uTmVN9yd3DzgGC5nGm51g8s1Y2t-2BnAc4sfqCaGPJl-2F-2FvcN-2BR=
+9sSdzX9U3i0yiAscVoF7X-2Baf63qtmnYes-2BQdz2kQw-2Fg-3D-3DecPB_sGnPqz2fTiTdu9S=
+JOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw48=
+w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgEc9=
+YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfWKm=
+2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5MyO=
+GL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7Pu=
+mCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2Fj=
+vB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsiiz=
+4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1Np=
+RyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2BmDG7r0agwflFr2ec8Vh=
+lyxSb0eZOuQgoE86Z21I2ZiVKZHLGZ4IkLDDpZiFeThWS5HTjhycXptkkFzMjfCjR4Kdgy-2Fpd=
+4nfcLSzOX0mgd3HGaaBrtSV6SSvpADTOHZ2BV )
+
+
+
+
+
+
+
+
+
+
+
+
+ Follow us!
+
+
+
+
+
+
+
+
+   You received this message
+because you are a registered member of Meetup.
+Unsubscribe ( http://clicks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7Yc=
+nfSAKsQAD0GnFi1zzMJ-2FAp8-2FvJWDU90uxk8S2kaP7lJWk78Zjo-2Fyjw-2BlClG8at70MmH=
+tVb7Tukx0vVlLR7nzScP3Yi1gK4sydRtH-2FHGtuuhTiqpN0ARMxegmigaYmd6BIGwQFR8A-2B0=
+X-2BQafX9Xhv-2F58VDalYj2Ql-2FJSZaNRZV0KidrM9jJ1cf66p5D-2FpPJaYv5FsAg2AtNYIr=
+FobU5V3uLiyHuQ-3DLbr0_sGnPqz2fTiTdu9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIU=
+iiXE04IziHml42Zj3nA84eBbiAmYxORMPsw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZS=
+j3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgEc9YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8J=
+F-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ=
+-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYn=
+hUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwc=
+ghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd=
+4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsiiz4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJER=
+l8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBj=
+a-2FYpa8Asv1QS3-2Bm0e5fxXxYvEBKsyPEVoY1miWWWw3LaGGF0WtsEKYY117I7M4v2SRZGJls=
+HKdDktMMdHiNuvgPDGikK3rPGRAdPdu5BLOS5q7RsHhCwgYm9nFm5H-2BJYbFCiEfyqhBmu3Zc =
+) from this
+type of email. Manage your settings=20
+( http://clicks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0Gn=
+Fi1zzMJ-2FAp8-2FvJUFWt2QZCpzGRicrQn-2FVRrTrdnrsGmDiOAww816k8jEPnA6SG9TDg2OU=
+3XpaKRXFiQGKng7DwGTDtUuwm3OwvDH6rYS529opgDnCpM-2BtqsPyCzBHhmBZqqJMwNRTSWLbw=
+LZD6fPFhs3eM0A19OO1ZtBjU8yTZvBjksOMO6W3PP4ak9e5G3JDMKI5Y3Op6dmcD35oN9L18unL=
+lA4zSwg29my6JjNHuniuVMYhv6Mwvr6SwQYgyrgRf3nFobr4xi5Vg7nFIFtIuGL-2BlW8Ce0Bhv=
+tdXU_r_sGnPqz2fTiTdu9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Z=
+j3nA84eBbiAmYxORMPsw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHIC=
+niL-2FWEAreBsk8TMYgEc9YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSK=
+LRcj4MDwEogegUOKaDfWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7ku=
+RbqADEsBqLqjjs3EYR5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2=
+F73NfjkE2SgAeUJQUuD7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQ=
+zEdElleVxGAmApR2in-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVB=
+XPXXKTALzsYyehgrNwsiiz4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWM=
+kgiwlLz8cdrEHsVk5kq1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3=
+-2BmNyjGmh9NOM-2F2XrTHhw56JaDahueDRRdaHuGXEC714yRpqFHqgD-2FKTjaBPNzcuJg-2F7=
+mlfSbJSC6CwgJAdko6mrQSXD7EPLuQ3c3hhjtdxbCZh8INnJdHAYELaTlv5hsNJ )
+ for all types of email updates.
+Visit a your account page=20
+( http://clicks.meetup.com/ls/click?upn=3Du001.diletKXCNW6YnMIA4YdA2mIZ3xXL=
+q16knN0G1ax1djNzqmkfDPMUlQ0Wx8EaNky15S6pABnv2S1ZhunByF5sKSlVr1104G4AbnqQfDl=
+6kanVAx9KkQ4Z0pZMF2MMNdxV9iyAcP7oJXnB5GUf9PDnncUrMxypKmRPc1rCGnVJ-2FkfF9cJn=
+AemOlwY3II9bqVl-2Fd5JVFcJHKxMPvgk0XYR3sUCFmVQKkVOP2UlaFuBGtsV-2FZkBr645haY2=
+TUjWroHZoIdYP1976oLJ7LeYu8nuSeeOl-2Bl9zcm6FJtn3rIQ38kzwhswq6pnC4iGpQb5jhHFF=
+G6ac_sGnPqz2fTiTdu9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3=
+nA84eBbiAmYxORMPsw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICni=
+L-2FWEAreBsk8TMYgEc9YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLR=
+cj4MDwEogegUOKaDfWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRb=
+qADEsBqLqjjs3EYR5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F7=
+3NfjkE2SgAeUJQUuD7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzE=
+dElleVxGAmApR2in-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXP=
+XXKTALzsYyehgrNwsiiz4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkg=
+iwlLz8cdrEHsVk5kq1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2=
+BmxUhyX4Rzxg97eLOSeVMP9gBlNAukieLysQnrpw16QF-2B9LVJxfJBfKthsTkVe-2FgNGPyupc=
+0LfEeL7ciBARk-2FYyuAVXhCiis3OX22hy4Xhs0AM6o81WKAtW58kLJuVy-2Bc3 )
+ to change your contact details, privacy settings, and other
+settings.
+Meetup LLC=20
+( http://clicks.meetup.com/ls/click?upn=3Du001.diletKXCNW6YnMIA4YdA2khSamDK=
+jnu5NZPSD0tvLOLJ1VsjyiQp-2B7GZLUd-2BkCllidq-2B-2Bc7FyhD3dRLGx3MgPEursumWO7r=
+PdGZ232ZvBTQD-2BCzr6gBjQQUnOrLLe40m79TqJfKy-2FCszySOtfKHi-2FACjtFKpIbz2Bc9B=
+X2tw0GmMVB4OGOPI5E6QdWr9oufww8fc7WRHRZE5P6uClkcjc0NYMGM05KfKEVCVvhg978WwT3z=
+LAKFyX4krDQKRbKbyIkrXit-2Fr-2FePHxNSajVWGQIspBOj7ygyb4WcJQWPbuCk-3DdNBT_sGn=
+Pqz2fTiTdu9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84eBbi=
+AmYxORMPsw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2FWEAr=
+eBsk8TMYgEc9YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEo=
+gegUOKaDfWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqL=
+qjjs3EYR5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2S=
+gAeUJQUuD7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdElleVxG=
+AmApR2in-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzs=
+YyehgrNwsiiz4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlLz8cd=
+rEHsVk5kq1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2BmHFWp8r=
+IaDX9lztWdUAcvlhA6pCXp64j-2Bg1rtEniLztZzAnxFVqf3ola-2B8NOx8WA78RpNAIACIS-2F=
+kFInP2YsjTzYggqZWWJFd-2FeZnTSVAB5BAy00LqzeGBsqc8zNDOdUK )
+, 169 Madison Ave., STE 11218, NY, NY 10016
+Read our Privacy Policy=20
+( http://clicks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0Gn=
+Fi1zzMJ-2FAp8-2FvJVaO-2FyHLCO78pv31bCvFric1M7aoMkOQDamUa7WxCLYMfWHkNEHNzInd=
+cP0y3NF5uWPUbKywlTQC4HNeXn9cGoEBBNCVLrbEyZMB8X8M460QRKjewWaICqW1WW-2B2LP5Y-=
+2FZWpY03-2F5-2F9BQrhOlehOvkbTFtrWVq-2BzXhovcr9Zi8HiVcE1aIPAiFsm-2B4FjHqB67E=
+w23hWmd7C-2B0pWkqq4sa5DKDhXR325Uo2UymiLLT2ipsXPM077Tznrzp5jvO8Tl8Me3NLzRNNz=
+x8zY9sSl1mUx2lab_sGnPqz2fTiTdu9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE0=
+4IziHml42Zj3nA84eBbiAmYxORMPsw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6=
+zDYqqbTHICniL-2FWEAreBsk8TMYgEc9YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BG=
+H6Y8aVFoSKLRcj4MDwEogegUOKaDfWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns=
+0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJ=
+QDN9Mqdc-2F73NfjkE2SgAeUJQUuD7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSO=
+kq1HKiRYhQzEdElleVxGAmApR2in-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgn=
+mJUg6e2CVBXPXXKTALzsYyehgrNwsiiz4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76=
+fPYBu01KWMkgiwlLz8cdrEHsVk5kq1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FY=
+pa8Asv1QS3-2BmwR3bmHUYZgjoR-2BYDYqhSKZfrm1nq3RVpiFXRP5TpyPNCH4QdCO7QyU1dZSy=
+c-2BKW0e4Ytk6p1Mw4WNnZrk0n77vZvXatGVwpNkfHFpF2Yr63c2h34CCGrSpZ6Jmt3VGSH )
+.
+
+
+
+
+
+--f09f3f8fe8c2d8764e860e6d686066e7386c493d58920a4813c805a09218
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=iso-8859-1
+Mime-Version: 1.0
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w=
+3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<div style=3D"display:none !important;visibility:hidden;mso-hide:all;font-s=
+ize:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:=
+0;overflow:hidden;">
+
+AWS SBG at Ratan Tata Maharashtra State Skills U. - Nagpur invites you to k=
+eep connecting</div>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ =20
+   =20
+ =20
+
+ =20
+   =20
+ =20
+
+ =20
+
+ =20
+
+ =20
+
+
+
+
+<!-- email/includes/event_reminder.html -->
+
+
+
+
+
+
+
+
+
+ =20
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ =20
+
+ =20
+
+ =20
+
+ =20
+
+ =20
+
+ =20
+
+ =20
+   =20
+   =20
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=09
+		<title>Meetup</title>
+		<style type=3D"text/css">
+      @media only screen and (max-device-width: 480px) {
+        .other-meetups-tearsheet {
+          display:none;
+        }
+        *[class=3Dpeople],*[class=3DnoFloat] {
+          width: 100%!important;
+          float:none!important
+        }
+        .showMobile {
+          color:#222!important;
+          line-height: 16px!important;
+          max-height:20px!important;
+          height:20px!important;
+        }
+        .hideMobile {
+          color:#fff!important;
+          line-height:0px!important;
+          display:none!important;
+        }
+        .mu-subheader {
+					font-size: 9px !important;
+				}
+      }
+      @media only screen and (max-device-width: 320px) {
+        .event-meta,
+        .event-rsvp-box,
+        .noFloat,
+        .event-rsvp-box-status {
+          float:none!important;
+          width:100%!important;
+        }
+        .showMobile {
+          color:#222!important;
+          line-height: 16px!important;
+          max-height:20px!important;
+          height:20px!important;
+        }
+        .hideMobile {
+          color:#fff!important;
+          line-height:5px!important;
+          display:none!important;
+        }
+        .event-rsvp-box {
+          margin-top:8px;
+        }
+        .other-meetups-rsvp {
+          width:40%!important;
+        }
+        .other-meetups-event-meta {
+          width:60%!important;
+        }
+        .event-rsvp-box-actions {
+          width:100%;
+        }
+        *[class=3Dpeople] {
+          width: 100%!important;
+          float:none!important
+        }
+      }
+      @media only screen and (min-width: 10px) {
+        .meetup-button-gradient {
+          background-image:-webkit-gradient(linear,left top,left bottom,fro=
+m(#e6304c),to(#cb1834));
+          background-image:-moz-linear-gradient(center top,#e6304c,#cb1834)=
+;
+          text-shadow:#b8263c -1px -1px 0;
+          box-shadow:#ed6e81 1px 1px 0 0 inset;
+        }
+        .meetup-button-link {
+          border: none!important;
+          padding: 5px 18px!important;
+        }
+        .group-name {
+          border:2px solid #fff;
+          border-width:2px 0 6px;
+          color:#232326 !important;
+          font-size:18px;
+          font-weight:bold;
+        }
+        .meetup-link, .footer-link, .event-description a {
+          color:#7661D2 !important;
+          text-decoration:none;
+        }
+        .footer-univ {
+          background:#eee !important;
+          font-family:arial,sans-serif;
+        }
+      }
+     =20
+      .footer-text {
+        font-family: Helvetica,Neue,Regular;
+        font-size: 10px;
+        color: #464649;
+        line-height: 150%;
+      }
+       .footer-below {
+        padding: 7% 0;
+        /*Space content below footer*/
+      }
+     =20
+      /* Css button */
+      .primary-button {
+        display: inline-flex;
+        padding: 12px 24px;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        border-radius: 999px;
+        background-color: #232326;
+        color: #FFFFFF !important;
+        text-decoration: none !important;
+        font-weight: bold !important;
+      }
+      .secondary-button {=20
+          display: inline-flex;
+          padding: 12px 24px;
+          justify-content: center;
+          align-items: center;
+          gap: 8px;
+          border-radius: 999px;
+          background: transparent;
+          border: 1px solid #12121526;
+          color: #232326;
+          text-decoration: none;
+          font-weight: bold;
+      }
+      /* Dark mode styles */
+      @media (prefers-color-scheme: dark) {
+        .primary-button {
+          background-color: #FFFFFF !important;
+          color: #000000 !important;
+        }
+        .secondary-button {
+          border: 1px solid #FFFFFF;
+          color: #FFFFFF !important;
+        }
+      }
+      .container {
+        max-width:584px;
+        width:100%
+      }
+     =20
+      .layout-body-content {
+        padding: 0 16px;
+        margin: 0 auto;
+      }
+		</style>
+
+=09
+=09
+		<div>
+		 =20
+
+		 =20
+
+
+
+
+
+     =20
+     =20
+      <table cellpadding=3D"10" cellspacing=3D"0" width=3D"100%" style=3D"w=
+idth:100%;min-width:100%;">
+        <tr>
+          <td align=3D"center" style=3D"text-align:center;">
+            <a style=3D"display:block;height:40px;max-height:40px;" href=3D=
+"http://clicks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnF=
+i1zzMJ-2FAp8-2FvJUYHmulqAOVKs3h2sPLMiI5s3cN6De1-2Ba-2BCgIbXczsPHtIzVrSYqFjM=
+JJ4NTPW3r20qEhcjAfi3bEAyNNJBhm4Ko1ggEgLc-2Fx3CDhVEWwI-2BYNtRnPZbgG5iuMBkmnR=
+Hu7uXRSIBnGML2Bqd8eJerfUUui-2FQ1L7qMILG6B6OyFRhlg-3D-3DcH8m_sGnPqz2fTiTdu9S=
+JOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw48=
+w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgEc9=
+YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfWKm=
+2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5MyO=
+GL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7Pu=
+mCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2Fj=
+vB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsiiz=
+4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1Np=
+RyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2BmxlVd-2BoEWB9Vhc1lG=
+TyLhBGCxNvCOVZadrEYQHhhLrr2eFZDhOUoRjIH7ssaBN7uuZrK-2FifroQnxRYA3jjUXiUVcm9=
+9KRfFmecWrTzVcO1zSwugt99S52HL79FNL6UkHS" title=3D"Meetup">
+              <img src=3D"https://secure.meetupstatic.com/email/images/meet=
+up-horizontal-logo.png" width=3D"120" alt=3D"Meetup" style=3D"border:0">
+            </a>
+          </td>
+        </tr>
+      </table>
+     =20
+      <table align=3D"center" cellpadding=3D"10" cellspacing=3D"0" width=3D=
+"100%" style=3D"width:100%; max-width:584px;">
+      <div align=3D"center" style=3D"border-top:0px dotted #ccc;margin-bott=
+om:8px;overflow:hidden;width:100%; max-width:584px;">
+               =20
+       =20
+       =20
+         =20
+         =20
+         =20
+         =20
+                             =20
+                   =20
+                  <table width=3D"100%" align=3D"left">
+                          <tbody>
+                            <tr>
+                              <td height=3D"15px">
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                 =20
+         =20
+
+      </div>
+      </table>
+
+      <!--[if mso]>
+        <center>
+          <table><tr><td width=3D"650">
+      <![endif]-->
+      <div style=3D"width:94%;min-width:220px;max-width:650px;margin:0 auto=
+;padding-top:6px;text-align:left;font-family:arial,sans-serif;font-size:13p=
+x;line-height:18px;color:#464649;">
+       =20
+        <!-- header -->
+        <div class=3D"mu-subheader" style=3D"border-bottom:5px solid #fff;"=
+>
+          <span style=3D"background:#7661D2;color:#fff;border:4px solid #76=
+61D2;text-transform:uppercase;font-size:11px;">Sunday</span>
+        </div>
+
+        <div style=3D"border-top:5px solid #fff;border-bottom:5px solid #ff=
+f;text-decoration:none;color:#7661D2;font-size:28px;line-height:30px;font-w=
+eight:bold;">&gt;
+          <a href=3D"http://clicks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5=
+LJDG7YcnfSAKsQAD0GnFi1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfSCI4qoQwrMrsRMV56fOqB=
+nZXIkpDyEgUmMHlMNmOkWFijWpmqJ7BkLi1KSOzZK9-2B-2Ftum6F6kQ3o8mHGYHbKN-2B1tIXc=
+dIz7go73aUKFQ-2FZpgQzk13QcdkTBn-2F7JlyV9rHlvI8yfgp2S-2FbVA-2BBXql8aLnZvYuFZ=
+sIgiXXaqPVA2Rjs965ynSlODEUJJY0laxOigS-2Fj30IE2nl-2Fa4LcewV-2FSnnZj8w-3D-3Dy=
+jUr_sGnPqz2fTiTdu9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3n=
+A84eBbiAmYxORMPsw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL=
+-2FWEAreBsk8TMYgEc9YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRc=
+j4MDwEogegUOKaDfWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbq=
+ADEsBqLqjjs3EYR5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73=
+NfjkE2SgAeUJQUuD7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEd=
+ElleVxGAmApR2in-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPX=
+XKTALzsYyehgrNwsiiz4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgi=
+wlLz8cdrEHsVk5kq1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2B=
+mlJzoM6Hq3OHB89m6f89wzPBjMC0N15osUY6LcPHvGL-2FZ2JqmHN6-2FWrCAVv6LYqaWGgYz1U=
+5QlNupeeuetgS4Q-2FSay2HJQJ71W-2F-2BzLPgwrgnAFv06e1tSGPK0vso5rdmX" style=3D"=
+color:#7661D2!important;text-decoration:none;">
+            <font color=3D"#7661D2">AWS Cloud Practitioner Voucher Challeng=
+e</font>
+          </a>
+        </div>
+
+        <div class=3D"group-name">
+         =20
+            AWS SBG at Ratan Tata Maharashtra State Skills U. - Nagpur
+         =20
+        </div>
+        <!-- header ends -->
+       =20
+        <!-- date and RSVP -->
+       =20
+       =20
+        =20
+        <div style=3D"border-top:1px dotted #ccc;margin-bottom:8px;overflow=
+:hidden;width:100%;">
+          <!--[if mso]>
+            <table width=3D"100%"><tr><td width=3D"49%">
+          <![endif]-->
+          <div class=3D"event-meta" style=3D"float:left;width:50%;min-width=
+:220px;border-top:8px solid #fff;font-family:arial,sans-serif;">
+            <!-- event date -->
+            <div style=3D"border:10px solid #fff;border-width:0 10px 10px 0=
+">
+             =20
+             =20
+             =20
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ =20
+
+ =20
+
+ =20
+
+ =20
+
+ =20
+
+ =20
+
+ =20
+   =20
+   =20
+
+
+
+
+
+
+
+
+
+
+
+
+
+             =20
+
+              <span style=3D"color:#111;">
+               =20
+                  Sunday, September  6, 2026
+               =20
+              </span>
+              <br>
+               5:00 PM Asia/Kolkata
+            </div>
+            <!-- event date ends -->
+           =20
+            <!-- event location -->
+            <div style=3D"border-right:10px solid #fff;">
+             =20
+               =20
+               =20
+                  <span style=3D"color:#111111;">
+                    Online event
+                  </span><br>
+               =20
+               =20
+               =20
+                 =20
+                    Link visible for attendees
+                 =20
+
+               =20
+             =20
+            </div>       =20
+            <!-- event location ends -->
+           =20
+            <!-- event fee info -->
+           =20
+            <!-- event fee info ends -->
+           =20
+            <!-- add to calendar link -->
+           =20
+           =20
+           =20
+              <div style=3D"border-top:8px solid #fff;">
+                <table class=3D"add-to-calendar" border=3D"0" width=3D"300"=
+ style=3D"border-collapse:collapse;">
+                  <tr>
+                    <td class=3D"add-to-cal-icon" width=3D"28">
+                      <a href=3D"http://clicks.meetup.com/ls/click?upn=3Du0=
+01.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfSCI4qoQwr=
+MrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkWFijWpmqJ7BkLi1KSOzZK9-2B-2Ftum61OjLamPFOW6=
+wYB6yVcqIK6c8I95nFf9HNLOxgQuO7uYzcP9X5DbyK7HWBFnqTG70BGlwy4dBZu1HWUihAQthcw=
+-3D-3DGSks_sGnPqz2fTiTdu9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHm=
+l42Zj3nA84eBbiAmYxORMPsw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqb=
+THICniL-2FWEAreBsk8TMYgEc9YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aV=
+FoSKLRcj4MDwEogegUOKaDfWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gw=
+e7kuRbqADEsBqLqjjs3EYR5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mq=
+dc-2F73NfjkE2SgAeUJQUuD7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKi=
+RYhQzEdElleVxGAmApR2in-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e=
+2CVBXPXXKTALzsYyehgrNwsiiz4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu0=
+1KWMkgiwlLz8cdrEHsVk5kq1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv=
+1QS3-2BmReOfFgfxFQ4yrM0KpyzR4yb49Ezal-2BT7FvsjdhKNmuV1Xm6EUOo78pkQ4K7FYrj7-=
+2BLiaIFqoCI3ZdUNHATeBRTnPUcrHw67unx-2BtHuvH1oRT6MsVD-2FzJxXE7t6lCU-2F1B">
+                        <img src=3D"https://appboy-images.com/appboy/commun=
+ication/assets/image_assets/images/6131205644145f38056fdd69/original.png?16=
+30609494" alt=3D"Add to calendar">
+                      </a>
+                    </td>
+                    <td>
+                      <p style=3D"color:#69696C;font-size:14px;margin:0;fon=
+t-family:arial,sans-serif;">
+                        <a style=3D"color:#69696C;text-decoration:none;" hr=
+ef=3D"http://clicks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQA=
+D0GnFi1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfSCI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHl=
+MNmOkWFijWpmqJ7BkLi1KSOzZK9-2B-2Ftum61OjLamPFOW6wYB6yVcqIK6c8I95nFf9HNLOxgQ=
+uO7uYzcP9X5DbyK7HWBFnqTG70BGlwy4dBZu1HWUihAQthcw-3D-3DTCsm_sGnPqz2fTiTdu9SJ=
+OmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw48w=
+6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgEc9Y=
+HSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfWKm2=
+E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5MyOG=
+L4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7Pum=
+Cz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2Fjv=
+B4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsiiz4=
+GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1NpR=
+yPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2Bmh2izffyHwfhYoSnkhIy=
+O-2Bi4AmP0naCf-2FaJhahNBYC5HNH6npb2fmmX6FBgV8l58Y9FTmeDKpobwbnQ6FX4JVJbgbCM=
+mM7YX0Zk5uY-2FG5ngbIHVcOMXA8sF1LqCqBFg5i">
+                         =20
+                            Add to calendar =20
+                         =20
+                        </a>
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+           =20
+            <!-- add to calendar link ends -->
+          </div>
+
+          <!--[if mso]>
+            </td><td width=3D"49%" align=3D"right" valign=3D"top">
+          <![endif]-->=20
+         =20
+       =20
+       =20
+        <table cellpadding=3D"10" cellspacing=3D"0" width=3D"100%" style=3D=
+"width:100%;min-width:100%;">
+        =20
+        <tr>
+                        <td align=3D"left" class=3D"space-1">
+                        <div><a class=3D"primary-button" href=3D"http://cli=
+cks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi1zzMJ-2FAp=
+8-2FvJXG2cj6blzdFGAvkCfSCI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkWFijWpmqJ7B=
+kLi1KSOzZK9-2B-2Ftum6F6kQ3o8mHGYHbKN-2B1tIXcdIz7go73aUKFQ-2FZpgQzk13QcdkTBn=
+-2F7JlyV9rHlvI8yfgp2S-2FbVA-2BBXql8aLnZvYuFZsIgiXXaqPVA2Rjs965ynSlODEUJJY0l=
+axOigS-2Fj33vpfiSeSuJRRV3Yk7BZmH2UdY6UFWbgBRCWr1V0t6-2FQP0yAFCr6WkEqSwTSqut=
+-2FhpVVolGovTF1uhlNI6gZgiLZ-2Fgq2fUbOHfz7Uy39Y5hSY-2BFChfYzla7dYnPrI6nFKv7j=
+1_sGnPqz2fTiTdu9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA8=
+4eBbiAmYxORMPsw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2=
+FWEAreBsk8TMYgEc9YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4=
+MDwEogegUOKaDfWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqAD=
+EsBqLqjjs3EYR5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73Nf=
+jkE2SgAeUJQUuD7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdEl=
+leVxGAmApR2in-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXK=
+TALzsYyehgrNwsiiz4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwl=
+Lz8cdrEHsVk5kq1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2Bm0=
+LxjSXVk7N98McFBPpkd-2F5zVVCXx4zzt1Cx1pkW4BlAMSBWS1T9nEMQ31fcz5hN1jxOsGkZFzT=
+33FjZ5C7DPvCOntXCjIzwxLRSmSqaYVVr6MpJKS19rKRKjHjUZU1R0"><strong>RSVP today<=
+/strong></a></div>
+                        </td>
+        </tr>
+       =20
+       =20
+        <tr>
+                        <td align=3D"left" class=3D"space-1">
+                        <div style=3D"padding-top: 20px;"></div>
+                        </td>
+        </tr>
+      </table>
+       =20
+       =20
+        <!-- people to look for -->
+       =20
+       =20
+       =20
+       =20
+       =20
+       =20
+          <div style=3D"border-top:1px dotted #ccc;clear:both;">
+            <div style=3D"border:8px solid #fff;border-width:8px 0;">
+              <div style=3D"font-size:16px;font-weight:bold;">             =
+  =20
+               =20
+                 =20
+                    125 Members going, including:
+                 =20
+               =20
+              </div>
+             =20
+              <div style=3D"clear:both;width:100%;overflow:hidden">
+               =20
+               =20
+                <!--[if mso]>
+                  <table width=3D"100%"><tr>
+                <![endif]-->
+               =20
+                 =20
+                   =20
+                   =20
+                   =20
+                   =20
+                   =20
+                   =20
+                   =20
+                   =20
+
+                    <!--[if mso]>
+                      <td width=3D"49%">
+                    <![endif]-->
+                    <div style=3D"float:left;border:5px solid #fff;border-t=
+op:10px solid #fff;border-left:none;border-right:15px solid #fff;width:47%;=
+max-width:47%;min-width:220px;" class=3D"people">
+                      <table style=3D"width:100%;">
+                        <tr>
+                          <td valign=3D"top" style=3D"min-width:50px;paddin=
+g-right:10px;overflow:hidden;min-height:50px;height:50px;max-height:50px;wi=
+dth:50px;">
+                            <div style=3D"min-height:50px;overflow:hidden;m=
+in-width:50px;height:50px;max-height:50px;">
+                              <a href=3D"http://clicks.meetup.com/ls/click?=
+upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfS=
+CI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkWFijWpmiLM0YNNvGV3Q-2B4oTavLXudOcPu=
+-2BmPKCMS2w9IRwyGkg-3D-3DEDOP_sGnPqz2fTiTdu9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2=
+BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW=
+65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgEc9YHSksWdloS8POLN6eTiIY2U9wxhhro=
+l1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvh=
+FrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9=
+Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2=
+BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDj=
+vu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsiiz4GLjWCrSuM71SiL6BakHgi92EYvg-2=
+FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG=
+1-2FjIBja-2FYpa8Asv1QS3-2BmvXAMqk6Xaywhhz5Tacq3u7gijllxjlIdZEtIElHwN-2FsJpD=
+g6nm1HepoBVeTVdGq-2BYRMILVMsykZOm05mol1qer5gKfbYVE3-2B7pOtldF-2FP36A-2FS2fL=
+IV41-2B2U8380frjp"><img src=3D"https://secure.meetupstatic.com/photos/membe=
+r/1/0/b/6/thumb_324484278.jpeg" border=3D"0" width=3D"50" height=3D"auto" s=
+tyle=3D"width:50px;display:block;margin:0;"></a>
+                            </div>
+                          </td>
+                          <td valign=3D"top" align=3D"left">
+                            <div style=3D"border-bottom:5px solid #fff;font=
+-size:14px;line-height:14px;font-family:arial,sans-serif;">
+                              <a href=3D"http://clicks.meetup.com/ls/click?=
+upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfS=
+CI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkWFijWpmiLM0YNNvGV3Q-2B4oTavLXudOcPu=
+-2BmPKCMS2w9IRwyGkg-3D-3DxrOD_sGnPqz2fTiTdu9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2=
+BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW=
+65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgEc9YHSksWdloS8POLN6eTiIY2U9wxhhro=
+l1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvh=
+FrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9=
+Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2=
+BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDj=
+vu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsiiz4GLjWCrSuM71SiL6BakHgi92EYvg-2=
+FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG=
+1-2FjIBja-2FYpa8Asv1QS3-2Bm4mFYC9Q-2F1GTk6cjEVnufHaPNF7aOkJN7EixEsL4kINCyLT=
+4chqfHDOcQ1pWSjGbqbKOJypAFFT3Vd6zHr-2BAaLPt4-2BNtBta581TlltMX5NdcL-2BxLguOn=
+wJBjISvIugFqB" style=3D"color:#0066CC;text-decoration:none;">Aryan Vijaykar=
+</a>
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                    <!--[if mso]>
+                      </td>
+                    <![endif]-->
+                 =20
+               =20
+                 =20
+                   =20
+                   =20
+                   =20
+                   =20
+                   =20
+                   =20
+                   =20
+                   =20
+
+                    <!--[if mso]>
+                      <td width=3D"49%">
+                    <![endif]-->
+                    <div style=3D"float:left;border:5px solid #fff;border-t=
+op:10px solid #fff;border-left:none;border-right:15px solid #fff;width:47%;=
+max-width:47%;min-width:220px;" class=3D"people">
+                      <table style=3D"width:100%;">
+                        <tr>
+                          <td valign=3D"top" style=3D"min-width:50px;paddin=
+g-right:10px;overflow:hidden;min-height:50px;height:50px;max-height:50px;wi=
+dth:50px;">
+                            <div style=3D"min-height:50px;overflow:hidden;m=
+in-width:50px;height:50px;max-height:50px;">
+                              <a href=3D"http://clicks.meetup.com/ls/click?=
+upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfS=
+CI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkWFijWpmiLM0YNNvGV3Q-2B4oTavLXuFfVfB=
+pPipsgt695dv-2BOOcA-3D-3D1-MQ_sGnPqz2fTiTdu9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2=
+BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW=
+65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgEc9YHSksWdloS8POLN6eTiIY2U9wxhhro=
+l1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvh=
+FrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9=
+Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2=
+BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDj=
+vu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsiiz4GLjWCrSuM71SiL6BakHgi92EYvg-2=
+FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG=
+1-2FjIBja-2FYpa8Asv1QS3-2Bm-2FZFlPRugssk-2FXXaGQID0KlCr2oChfaySJeAOVoZtwxjo=
+TkK6IAVWpMk1dhgjD-2Beo-2FudUEBvTq10zVt3vN7F3dARjts9pwUaydK3e8aqzUfJc9f-2Blc=
+pcjauDHCNokQXZO"><img src=3D"https://secure.meetupstatic.com/photos/member/=
+1/7/a/a/thumb_325026058.jpeg" border=3D"0" width=3D"50" height=3D"auto" sty=
+le=3D"width:50px;display:block;margin:0;"></a>
+                            </div>
+                          </td>
+                          <td valign=3D"top" align=3D"left">
+                            <div style=3D"border-bottom:5px solid #fff;font=
+-size:14px;line-height:14px;font-family:arial,sans-serif;">
+                              <a href=3D"http://clicks.meetup.com/ls/click?=
+upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfS=
+CI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkWFijWpmiLM0YNNvGV3Q-2B4oTavLXuFfVfB=
+pPipsgt695dv-2BOOcA-3D-3Dbqah_sGnPqz2fTiTdu9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2=
+BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW=
+65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgEc9YHSksWdloS8POLN6eTiIY2U9wxhhro=
+l1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvh=
+FrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9=
+Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2=
+BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDj=
+vu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsiiz4GLjWCrSuM71SiL6BakHgi92EYvg-2=
+FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG=
+1-2FjIBja-2FYpa8Asv1QS3-2BmLu87pTQlMpF0TeaUz744uGXEIztswQQ1lTU7Q6DJV3eBqKB2=
+pKWUaFezFrBIz9SDBhO42KXOxr-2F7BOOjuPbaVaQ9hzm6xoZWHhYr-2BEQGPenclLpdPH2RZED=
+iY3NkwTtA" style=3D"color:#0066CC;text-decoration:none;">mrigeshkoyande</a>
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                    <!--[if mso]>
+                      </td>
+                    <![endif]-->
+                 =20
+               =20
+                 =20
+                   =20
+                   =20
+                   =20
+                   =20
+                   =20
+                   =20
+                   =20
+                   =20
+                      <!--[if mso]>
+                       </tr><tr>
+                      <![endif]-->
+                   =20
+
+                    <!--[if mso]>
+                      <td width=3D"49%">
+                    <![endif]-->
+                    <div style=3D"float:left;border:5px solid #fff;border-t=
+op:10px solid #fff;border-left:none;border-right:15px solid #fff;width:47%;=
+max-width:47%;min-width:220px;" class=3D"people">
+                      <table style=3D"width:100%;">
+                        <tr>
+                          <td valign=3D"top" style=3D"min-width:50px;paddin=
+g-right:10px;overflow:hidden;min-height:50px;height:50px;max-height:50px;wi=
+dth:50px;">
+                            <div style=3D"min-height:50px;overflow:hidden;m=
+in-width:50px;height:50px;max-height:50px;">
+                              <a href=3D"http://clicks.meetup.com/ls/click?=
+upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfS=
+CI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkWFijWpmiLM0YNNvGV3Q-2B4oTavLXusdkbG=
+FpQICaXDz-2FyntAyUQ-3D-3DG_EM_sGnPqz2fTiTdu9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2=
+BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW=
+65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgEc9YHSksWdloS8POLN6eTiIY2U9wxhhro=
+l1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvh=
+FrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9=
+Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2=
+BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDj=
+vu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsiiz4GLjWCrSuM71SiL6BakHgi92EYvg-2=
+FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG=
+1-2FjIBja-2FYpa8Asv1QS3-2BmtgUV-2F8ZJBrJSElRedoF5V5pSu8v1SRJj7taeGGwlmdTmim=
+Kp4p0A7ftSAn6xQAG1kuCz6KBxIZIjiUGMNqQvHH7BSjGSGLAwkld7nGtD3x1PSiaTQ-2BvYl3Q=
+fVXM6mQyk"><img src=3D"https://secure.meetupstatic.com/photos/member/1/8/8/=
+2/thumb_274806274.jpeg" border=3D"0" width=3D"50" height=3D"auto" style=3D"=
+width:50px;display:block;margin:0;"></a>
+                            </div>
+                          </td>
+                          <td valign=3D"top" align=3D"left">
+                            <div style=3D"border-bottom:5px solid #fff;font=
+-size:14px;line-height:14px;font-family:arial,sans-serif;">
+                              <a href=3D"http://clicks.meetup.com/ls/click?=
+upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfS=
+CI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkWFijWpmiLM0YNNvGV3Q-2B4oTavLXusdkbG=
+FpQICaXDz-2FyntAyUQ-3D-3DR_JS_sGnPqz2fTiTdu9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2=
+BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW=
+65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgEc9YHSksWdloS8POLN6eTiIY2U9wxhhro=
+l1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvh=
+FrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9=
+Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2=
+BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDj=
+vu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsiiz4GLjWCrSuM71SiL6BakHgi92EYvg-2=
+FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG=
+1-2FjIBja-2FYpa8Asv1QS3-2BmhOLvwma9mxtYx3z132PRYfEuvfBNR2nGvDX6-2FfNOcO9wJs=
+PftWqKodnUI1qIvxE-2BYvMdh1Ds1xAoTSXETpkDptyWq8NDq0gJrRb-2BO0JRLFduIOBEViktP=
+60Yw2Gnph8H" style=3D"color:#0066CC;text-decoration:none;">Baranitharan K C=
+</a>
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                    <!--[if mso]>
+                      </td>
+                    <![endif]-->
+                 =20
+               =20
+                 =20
+                   =20
+                   =20
+                   =20
+                   =20
+                   =20
+                   =20
+                   =20
+                   =20
+
+                    <!--[if mso]>
+                      <td width=3D"49%">
+                    <![endif]-->
+                    <div style=3D"float:left;border:5px solid #fff;border-t=
+op:10px solid #fff;border-left:none;border-right:15px solid #fff;width:47%;=
+max-width:47%;min-width:220px;" class=3D"people">
+                      <table style=3D"width:100%;">
+                        <tr>
+                          <td valign=3D"top" style=3D"min-width:50px;paddin=
+g-right:10px;overflow:hidden;min-height:50px;height:50px;max-height:50px;wi=
+dth:50px;">
+                            <div style=3D"min-height:50px;overflow:hidden;m=
+in-width:50px;height:50px;max-height:50px;">
+                              <a href=3D"http://clicks.meetup.com/ls/click?=
+upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfS=
+CI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkWFijWpmiLM0YNNvGV3Q-2B4oTavLXu9zbb0=
+Rr5H2LwbGU0M3i7Qw-3D-3DXGL7_sGnPqz2fTiTdu9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2Bk=
+ZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65=
+h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgEc9YHSksWdloS8POLN6eTiIY2U9wxhhrol1=
+zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFr=
+BF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx=
+3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BE=
+e6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu=
+8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsiiz4GLjWCrSuM71SiL6BakHgi92EYvg-2FP=
+zQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-=
+2FjIBja-2FYpa8Asv1QS3-2BmY6O5oJkoAJqDrU-2B92QJ7zU-2FUdH1JtR8CrVdzg6tv63MBQ4=
+Lim5-2BinD95WXNyxNzid9hQf-2F4yyA7EWY1fPP94oYRgj1eebxUPixUW6m8p-2BKzY5sFqzZc=
+rRADeJ9n0gmnQ"><img src=3D"https://secure.meetupstatic.com/photos/member/d/=
+a/3/d/thumb_321595869.jpeg" border=3D"0" width=3D"50" height=3D"auto" style=
+=3D"width:50px;display:block;margin:0;"></a>
+                            </div>
+                          </td>
+                          <td valign=3D"top" align=3D"left">
+                            <div style=3D"border-bottom:5px solid #fff;font=
+-size:14px;line-height:14px;font-family:arial,sans-serif;">
+                              <a href=3D"http://clicks.meetup.com/ls/click?=
+upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfS=
+CI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkWFijWpmiLM0YNNvGV3Q-2B4oTavLXu9zbb0=
+Rr5H2LwbGU0M3i7Qw-3D-3DkzTI_sGnPqz2fTiTdu9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2Bk=
+ZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65=
+h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgEc9YHSksWdloS8POLN6eTiIY2U9wxhhrol1=
+zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFr=
+BF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx=
+3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BE=
+e6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu=
+8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsiiz4GLjWCrSuM71SiL6BakHgi92EYvg-2FP=
+zQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-=
+2FjIBja-2FYpa8Asv1QS3-2Bm9qnlhWnVpmtlSOpFIrHcxAzRDRJlIt09u7XzVC7sSg6u29f1PV=
+SotOmjr9Zi1bCQaTAz0zZsKzOQChCsjnoulQQHIfn4zA2z-2FvvJDC1pZfQk9eBxlYDC-2FZJBB=
+-2BpHvdCU" style=3D"color:#0066CC;text-decoration:none;">MD ABDULLAH</a>
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                    <!--[if mso]>
+                      </td>
+                    <![endif]-->
+                 =20
+               =20
+                 =20
+                   =20
+                   =20
+                   =20
+                   =20
+                   =20
+                   =20
+                   =20
+                   =20
+                      <!--[if mso]>
+                       </tr><tr>
+                      <![endif]-->
+                   =20
+
+                    <!--[if mso]>
+                      <td width=3D"49%">
+                    <![endif]-->
+                    <div style=3D"float:left;border:5px solid #fff;border-t=
+op:10px solid #fff;border-left:none;border-right:15px solid #fff;width:47%;=
+max-width:47%;min-width:220px;" class=3D"people">
+                      <table style=3D"width:100%;">
+                        <tr>
+                          <td valign=3D"top" style=3D"min-width:50px;paddin=
+g-right:10px;overflow:hidden;min-height:50px;height:50px;max-height:50px;wi=
+dth:50px;">
+                            <div style=3D"min-height:50px;overflow:hidden;m=
+in-width:50px;height:50px;max-height:50px;">
+                              <a href=3D"http://clicks.meetup.com/ls/click?=
+upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfS=
+CI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkWFijWpmiLM0YNNvGV3Q-2B4oTavLXurPNRc=
+i3POfmXVAHzGTPJNg-3D-3DBTHs_sGnPqz2fTiTdu9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2Bk=
+ZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65=
+h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgEc9YHSksWdloS8POLN6eTiIY2U9wxhhrol1=
+zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFr=
+BF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx=
+3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BE=
+e6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu=
+8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsiiz4GLjWCrSuM71SiL6BakHgi92EYvg-2FP=
+zQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-=
+2FjIBja-2FYpa8Asv1QS3-2BmTRGrhjY0vFFh7SZ6V5JTMO4VA9JPWuZ9muSf1zYnPXH3C-2BlA=
+QBjSgxFfkAIxBzeDjF9Jbp76fCWdG-2FqIZABtF4yZqf61-2FGeqFnQ-2BLzLjVFLFxmbkHObtm=
+JyJrZc1uK86"><img src=3D"https://secure.meetupstatic.com/photos/member/c/a/=
+9/f/thumb_323631871.jpeg" border=3D"0" width=3D"50" height=3D"auto" style=
+=3D"width:50px;display:block;margin:0;"></a>
+                            </div>
+                          </td>
+                          <td valign=3D"top" align=3D"left">
+                            <div style=3D"border-bottom:5px solid #fff;font=
+-size:14px;line-height:14px;font-family:arial,sans-serif;">
+                              <a href=3D"http://clicks.meetup.com/ls/click?=
+upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfS=
+CI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkWFijWpmiLM0YNNvGV3Q-2B4oTavLXurPNRc=
+i3POfmXVAHzGTPJNg-3D-3DnO3V_sGnPqz2fTiTdu9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2Bk=
+ZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65=
+h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgEc9YHSksWdloS8POLN6eTiIY2U9wxhhrol1=
+zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFr=
+BF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx=
+3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BE=
+e6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu=
+8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsiiz4GLjWCrSuM71SiL6BakHgi92EYvg-2FP=
+zQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-=
+2FjIBja-2FYpa8Asv1QS3-2BmQn-2BItHqNRXlimre8iiqoK-2FPuHCj3pVN-2BXbX0BUZw9fED=
+1Rjd2-2BB5l9Mphc1D923KYBu-2B5yutlEqejYn3bqaXhS7CNDcD-2FXT9WchqtbuFi7GsKgKHa=
+dKbJH-2FLRW1TLcdq" style=3D"color:#0066CC;text-decoration:none;">Sivakumar =
+G</a>
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                    <!--[if mso]>
+                      </td>
+                    <![endif]-->
+                 =20
+               =20
+                 =20
+                   =20
+                   =20
+                   =20
+                   =20
+                   =20
+                   =20
+                   =20
+                   =20
+
+                    <!--[if mso]>
+                      <td width=3D"49%">
+                    <![endif]-->
+                    <div style=3D"float:left;border:5px solid #fff;border-t=
+op:10px solid #fff;border-left:none;border-right:15px solid #fff;width:47%;=
+max-width:47%;min-width:220px;" class=3D"people">
+                      <table style=3D"width:100%;">
+                        <tr>
+                          <td valign=3D"top" style=3D"min-width:50px;paddin=
+g-right:10px;overflow:hidden;min-height:50px;height:50px;max-height:50px;wi=
+dth:50px;">
+                            <div style=3D"min-height:50px;overflow:hidden;m=
+in-width:50px;height:50px;max-height:50px;">
+                              <a href=3D"http://clicks.meetup.com/ls/click?=
+upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfS=
+CI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkWFijWpmiLM0YNNvGV3Q-2B4oTavLXutMAH6=
+48nvgSV1o648V6VIQ-3D-3DK5HP_sGnPqz2fTiTdu9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2Bk=
+ZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65=
+h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgEc9YHSksWdloS8POLN6eTiIY2U9wxhhrol1=
+zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFr=
+BF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx=
+3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BE=
+e6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu=
+8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsiiz4GLjWCrSuM71SiL6BakHgi92EYvg-2FP=
+zQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-=
+2FjIBja-2FYpa8Asv1QS3-2Bmmrrz7RD-2BsjLeSfpDmy4-2BWTSlVmU0-2BrpHB5wq54VJX9Jj=
+FblClQ0jK06imYduRsZCvND3F-2F2fSMyP28O0ldfxJZTHTVRr94JEoJs34gSuDTX4o34CgCvZZ=
+FFySahiiFmz"><img src=3D"https://braze-images.com/appboy/communication/asse=
+ts/image_assets/images/592f0c4c1b0e4d2db6c88e4d/original.?1496255564" borde=
+r=3D"0" width=3D"50" height=3D"auto" style=3D"width:50px;display:block;marg=
+in:0;"></a>
+                            </div>
+                          </td>
+                          <td valign=3D"top" align=3D"left">
+                            <div style=3D"border-bottom:5px solid #fff;font=
+-size:14px;line-height:14px;font-family:arial,sans-serif;">
+                              <a href=3D"http://clicks.meetup.com/ls/click?=
+upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfS=
+CI4qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkWFijWpmiLM0YNNvGV3Q-2B4oTavLXutMAH6=
+48nvgSV1o648V6VIQ-3D-3D_qqG_sGnPqz2fTiTdu9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2Bk=
+ZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65=
+h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgEc9YHSksWdloS8POLN6eTiIY2U9wxhhrol1=
+zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFr=
+BF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx=
+3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BE=
+e6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu=
+8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsiiz4GLjWCrSuM71SiL6BakHgi92EYvg-2FP=
+zQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-=
+2FjIBja-2FYpa8Asv1QS3-2BmyFA7feA010hiLweyeGSpC2w-2F9GgQGOzROwo5URRnZDWN7lZt=
+UIfXCLo-2BtbRl0a2LUCG59jz4A3v0crZcLfFUBwR5aMgB-2B47potmxOSxqAEiPHHBt3xqS-2B=
+ELyHkKRR9Pd" style=3D"color:#0066CC;text-decoration:none;">bharatbhute</a>
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                    <!--[if mso]>
+                      </td>
+                    <![endif]-->
+                 =20
+               =20
+                <!--[if mso]>
+                  </tr></table>
+                <![endif]-->
+              </div>  =20
+            </div>
+          </div>
+       =20
+        <!-- people to look for ends -->
+       =20
+        <!-- not announced to group message -->
+       =20
+
+       =20
+        <!-- not announced to group message ends -->
+       =20
+        <!-- event description -->
+       =20
+       =20
+       =20
+          <div style=3D"border-top:1px dotted #ccc;clear:both;">
+            <div class=3D"event-description" style=3D"border:8px solid #fff=
+;border-width:8px 0;">
+              <strong>Event description:</strong> Ready to become AWS Certi=
+fied?
+Join the AWS Cloud Practitioner Voucher Challenge organized by AWS Student =
+Builder Group (AWS SBG) at Ratan Tata Maharashtra State Skills University, =
+Nagpur.
+This 2-h...
+
+             =20
+                <a href=3D"http://clicks.meetup.com/ls/click?upn=3Du001.NY3=
+oBFzZ5LJDG7YcnfSAKsQAD0GnFi1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfSCI4qoQwrMrsRMV=
+56fOqBnZXIkpDyEgUmMHlMNmOkWFijWpmqJ7BkLi1KSOzZK9-2B-2Ftum6SvgriYW9Sdd1o58j1=
+ivxPQ-3D-3D7ty6_sGnPqz2fTiTdu9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04=
+IziHml42Zj3nA84eBbiAmYxORMPsw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6z=
+DYqqbTHICniL-2FWEAreBsk8TMYgEc9YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH=
+6Y8aVFoSKLRcj4MDwEogegUOKaDfWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0=
+Mc2Gwe7kuRbqADEsBqLqjjs3EYR5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQ=
+DN9Mqdc-2F73NfjkE2SgAeUJQUuD7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOk=
+q1HKiRYhQzEdElleVxGAmApR2in-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnm=
+JUg6e2CVBXPXXKTALzsYyehgrNwsiiz4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76f=
+PYBu01KWMkgiwlLz8cdrEHsVk5kq1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYp=
+a8Asv1QS3-2Bmdk9aKD2tFx1Z6YtDxrPLQZcXbmGH0wN3lWKt4M95vItbYt1YY9reWXu4cXLim1=
+6aBq2Y2dm571Gm141b-2FpdNDXWkDMaXdfBR4Z3koVe1SmpIpawt1q7EggV-2FYigvcnrH" sty=
+le=3D"color:#06C;text-decoration:none;font-size:12px;">
+                 =20
+                    Learn more
+                 =20
+                </a>
+             =20
+            </div>
+          </div>
+       =20
+        <!-- event description ends -->
+
+        <!-- upcoming events -->
+       =20
+       =20
+       =20
+          <div style=3D"background-color:#eee;border-top:10px solid #fff"> =
+        =20
+            <div style=3D"background-color:#eee;font-weight:bold;border:8px=
+ solid #eee;color:#7661D2!important;font-size:16px;">
+              <a href=3D"http://clicks.meetup.com/ls/click?upn=3Du001.NY3oB=
+FzZ5LJDG7YcnfSAKsQAD0GnFi1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfSCI4qoQwrMrsRMV56=
+fOqBnZXIkpDyEgUmMHlMNmOkWFijWpnOxaZLOb-2Fi-2FAZ8-2BrO-2BnuVD5Jfmlg8o0QYRd-2=
+F-2BD9g0K7MpXlwiTz1u67-2FnkuBYTeTmaZGCPYGPrRW3R6O90HpCAQW90C7LXPjoCsXdFvcKQ=
+GbtNwWnc0CJxJeeToHSuDD-2FL9UkC8Jn8ww0Ro8FPuNWWyTP-_sGnPqz2fTiTdu9SJOmTvrLQ-=
+2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw48w6mjSrQAU=
+nAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgEc9YHSksWdlo=
+S8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfWKm2E6u8Eu4s=
+7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5MyOGL4OX-2F0=
+Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7PumCz3Z-2Bo=
+SNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2FjvB4WDorJ2=
+bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsiiz4GLjWCrSu=
+M71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1NpRyPF134E1=
+EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2BmYYQfBKcsGsWR1reL-2Fzlmx6T4U=
+yRhSJdV3mCLvfnVxOysBBtW-2FQki9WHedFRLZgxqQxI7w3MQRmmN3FSdnC-2FCnBUBSKf1oIM6=
+pHBricf-2BlA0QF8hVv9yzNDnOXh-2B-2B8xzU" style=3D"color:#7661D2!important;te=
+xt-decoration:none;">
+                <font color=3D"#7661D2">
+                 =20
+                    More events from this group
+                 =20
+                </font>
+              </a>
+            </div>         =20
+
+            <table cellpadding=3D"0" cellspacing=3D"0" style=3D"width:100%;=
+background-color:#eee;font-family:arial,sans-serif;">
+             =20
+               =20
+               =20
+               =20
+               =20
+                    =20
+               =20
+               =20
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ =20
+
+ =20
+
+ =20
+
+ =20
+
+ =20
+
+ =20
+   =20
+   =20
+
+
+
+
+
+
+
+
+
+
+
+
+
+               =20
+               =20
+               =20
+               =20
+               =20
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ =20
+
+ =20
+
+ =20
+
+ =20
+
+ =20
+
+ =20
+   =20
+   =20
+
+
+
+
+
+
+
+
+
+
+
+
+
+               =20
+               =20
+               =20
+               =20
+               =20
+                <tr>
+                  <td class=3D"other-meetups-tearsheet" style=3D"width:32px=
+;background-color:#eee;vertical-align:top;border-top:1px solid #fff;padding=
+:8px 0 8px 8px;">
+                    <div style=3D"border:1px solid #555;">
+                      <div style=3D"background-color:#555;text-transform:up=
+percase;color:#fff;font-weight:bold;text-align:center;font-size:9px;line-he=
+ight:14px;height:14px;padding:0 4px;">
+                        <font color=3D"#fff">SEP</font>
+                      </div>
+                     =20
+                      <div style=3D"background-color:#fff;font-size:16px;li=
+ne-height:18px;height:18px;font-weight:bold;text-align:center;padding:1px 4=
+px 0 4px;">
+                         5
+                      </div>
+                    </div>
+                  </td>
+                  <td style=3D"vertical-align:top;padding:8px;border-top:1p=
+x solid #fff;">
+                    <table cellpadding=3D"0" cellspacing=3D"0" style=3D"wid=
+th:100%;">
+                      <tr>
+                        <td style=3D"background-color:#eee;vertical-align:t=
+op;">
+                          <a href=3D"http://clicks.meetup.com/ls/click?upn=
+=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfSCI4=
+qoQwrMrsRMV56fOqBnZXIkpDyEgUmMHlMNmOkWFijWpmqJ7BkLi1KSOzZK9-2B-2Ftum65QeKk9=
+4mJ2zQ6VfnY0mNTJez-2FZUKvE5rCkZB8OrGNh3ntSW8r51SgLV3p-2B5uTmVN9yd3DzgGC5nGm=
+51g8s1Y2t-2BnAc4sfqCaGPJl-2F-2FvcN-2BR9sSdzX9U3i0yiAscVoF7X-2Baf63qtmnYes-2=
+BQdz2kQw-2Fg-3D-3D3vs-_sGnPqz2fTiTdu9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrI=
+UiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZ=
+Sj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgEc9YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8=
+JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MO=
+Z-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRY=
+nhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDw=
+cghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgS=
+d4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsiiz4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJE=
+Rl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIB=
+ja-2FYpa8Asv1QS3-2Bmt2wmsCBLog88dQ1mYwU7hxG0O3vmGKf8sq98WUK6BRwEbYs3XnuWS12=
+J3yKwAxvNGI-2FZUpAuZqAVyj7pQcsDzFS-2B690kU79kLYEsvrlH9YYMRVUImgH99X-2BuImM-=
+2Fs4u2" style=3D"font-size:14px;" class=3D"meetup-link">Introduction to AWS=
+ Open Source</a><br>
+                          <div style=3D"padding:2px 0 4px 0;font-size:12px;=
+line-height:16px;font-family:arial,sans-serif;">
+                           =20
+                           =20
+                           =20
+                              Saturday, September  5, 2026  3:00 PM
+                             =20
+                             =20
+                                =B7
+                             =20
+                           =20
+                           =20
+                           =20
+                             =20
+                                75 attending
+                             =20
+                           =20
+                          </div>
+                        </td>
+
+                        <td style=3D"background-color:#eee;width:76px;verti=
+cal-align:top;">
+                         =20
+
+                         =20
+                         =20
+
+<div style=3D"display:block;border:none;background-color:#232326;border-rad=
+ius:999px;text-align:center;overflow:hidden">
+  <span class=3D"meetup-button-gradient" style=3D"background-color:#232326;=
+display:block;">
+    <a href=3D"http://clicks.meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7Y=
+cnfSAKsQAD0GnFi1zzMJ-2FAp8-2FvJXG2cj6blzdFGAvkCfSCI4qoQwrMrsRMV56fOqBnZXIkp=
+DyEgUmMHlMNmOkWFijWpmqJ7BkLi1KSOzZK9-2B-2Ftum65QeKk94mJ2zQ6VfnY0mNTJez-2FZU=
+KvE5rCkZB8OrGNh3ntSW8r51SgLV3p-2B5uTmVN9yd3DzgGC5nGm51g8s1Y2t-2BnAc4sfqCaGP=
+Jl-2F-2FvcN-2BR9sSdzX9U3i0yiAscVoF7X-2Baf63qtmnYes-2BQdz2kQw-2Fg-3D-3DNxKs_=
+sGnPqz2fTiTdu9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84e=
+BbiAmYxORMPsw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2FW=
+EAreBsk8TMYgEc9YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4MD=
+wEogegUOKaDfWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEs=
+BqLqjjs3EYR5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73Nfjk=
+E2SgAeUJQUuD7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdElle=
+VxGAmApR2in-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKTA=
+LzsYyehgrNwsiiz4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlLz=
+8cdrEHsVk5kq1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2BmsrP=
+9bePwTjp3T-2FgKfXq9GEd6om2yYFBRuK6y7bjRUh4cFWJm423MVoTplyfH-2B-2BdWG9TfrHFW=
+v0nrYz71rn59B4zwHlg2TAU6L34CoI4WzbSjNoPovf4-2FZnWMzl1tHujZ" class=3D"meetup=
+-button-link" style=3D"border-color:#232326;border-width:10px 24px;border-s=
+tyle:solid;font-family:arial,sans-serif;font-weight:bold;white-space:nowrap=
+;color:#fff;display:block;text-decoration:none;text-align:center;cursor:poi=
+nter;">
+      <font color=3D"#fff">
+        <nobr>
+          RSVP
+        </nobr>
+      </font>
+    </a>
+  </span>
+</div>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+             =20
+            </table>
+          </div>
+       =20
+        <!-- upcoming events ends -->
+
+        <!-- group social networks -->
+       =20
+       =20
+       =20
+       =20
+         =20
+         =20
+         =20
+         =20
+         =20
+         =20
+         =20
+         =20
+       =20
+          <br>
+          <div style=3D"border:8px solid #eee;background-color:#eee;">
+            <span style=3D"font-size:13px;font-family:arial,sans-serif;">
+             =20
+                Follow us!
+             =20
+            </span>
+           =20
+           =20
+           =20
+           =20
+           =20
+           =20
+           =20
+           =20
+           =20
+           =20
+           =20
+           =20
+          </div>
+       =20
+        <!-- group social networks ends -->
+      </div>
+      <!--[if mso]>
+          </td></tr></table>
+        </center>
+      <![endif]-->=20
+    </div>
+   =20
+   =20
+    <div>
+    <table cellpadding=3D"10" cellspacing=3D"0" width=3D"100%" style=3D"wid=
+th:100%;min-width:100%;">
+      <tr>
+            <td align=3D"center" class=3D"bg-mobile">
+            <table class=3D"bg-mobile" width=3D"100%">
+              <tbody>
+               =20
+                <tr>
+                  <td align=3D"center" class=3D"footer-below" style=3D"max-=
+width: 600px;">
+                  <p class=3D"footer-text">You received this message becaus=
+e you are a registered member of Meetup.<br>
+                  <a class=3D"footer-link" href=3D"http://clicks.meetup.com=
+/ls/click?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi1zzMJ-2FAp8-2FvJWDU90uxk=
+8S2kaP7lJWk78Zjo-2Fyjw-2BlClG8at70MmHtVb7Tukx0vVlLR7nzScP3Yi1gK4sydRtH-2FHG=
+tuuhTiqpN0ARMxegmigaYmd6BIGwQFR8A-2B0X-2BQafX9Xhv-2F58VDalYj2Ql-2FJSZaNRZV0=
+KidrM9jJ1cf66p5D-2FpPJaYv5FsAg2AtNYIrFobU5V3uLiyHuQ-3DjfdE_sGnPqz2fTiTdu9SJ=
+OmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw48w=
+6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgEc9Y=
+HSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfWKm2=
+E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5MyOG=
+L4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7Pum=
+Cz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2Fjv=
+B4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsiiz4=
+GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1NpR=
+yPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2Bmf9tqE-2BKQv18oWvV3m=
+tQp-2BhXTz27UJ63YwpR-2FDRCqVgYyfCoh2wIWuJlKfdiaforHw8RVO99OVsnINFL-2Bxg9upI=
+Wz5Anihdo4j1BuUa4XFfuLVnLLb7Ox2Cf7Gqwp4t-2BZ">Unsubscribe</a> from this typ=
+e of email. <a class=3D"footer-link" href=3D"http://clicks.meetup.com/ls/cl=
+ick?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi1zzMJ-2FAp8-2FvJUFWt2QZCpzGRic=
+rQn-2FVRrTrdnrsGmDiOAww816k8jEPnA6SG9TDg2OU3XpaKRXFiQGKng7DwGTDtUuwm3OwvDH6=
+rYS529opgDnCpM-2BtqsPyCzBHhmBZqqJMwNRTSWLbwLZD6fPFhs3eM0A19OO1ZtBjU8yTZvBjk=
+sOMO6W3PP4ak9e5G3JDMKI5Y3Op6dmcD35oN9L18unLlA4zSwg29my6JjNHuniuVMYhv6Mwvr6S=
+wQYgyrgRf3nFobr4xi5Vg7nFIFtIuGL-2BlW8Ce0BhvtdRaL9_sGnPqz2fTiTdu9SJOmTvrLQ-2=
+FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw48w6mjSrQAUn=
+AbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgEc9YHSksWdloS=
+8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfWKm2E6u8Eu4s7=
+qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5MyOGL4OX-2F0D=
+rwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7PumCz3Z-2BoS=
+NktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2FjvB4WDorJ2b=
+J0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsiiz4GLjWCrSuM=
+71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1NpRyPF134E1E=
+uouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2BmH-2FfGo7NzgfcIg0ABXExOdgWNPz=
+aElwYv-2B32iWnAIXS2HbEKB69pvghMkeEy9kBLyRT04ZL03NfhksdtM-2BGFj7jA85GU4BDZj4=
+T9YDv5nJ3tjmfAwO-2FNlz5pQ3dRxyiED">Manage your settings </a> for all types =
+of email updates.<br>
+                  Visit a <a class=3D"footer-link" href=3D"http://clicks.me=
+etup.com/ls/click?upn=3Du001.diletKXCNW6YnMIA4YdA2mIZ3xXLq16knN0G1ax1djNzqm=
+kfDPMUlQ0Wx8EaNky15S6pABnv2S1ZhunByF5sKSlVr1104G4AbnqQfDl6kanVAx9KkQ4Z0pZMF=
+2MMNdxV9iyAcP7oJXnB5GUf9PDnncUrMxypKmRPc1rCGnVJ-2FkfF9cJnAemOlwY3II9bqVl-2F=
+d5JVFcJHKxMPvgk0XYR3sUCFmVQKkVOP2UlaFuBGtsV-2FZkBr645haY2TUjWroHZoIdYP1976o=
+LJ7LeYu8nuSeeOl-2Bl9zcm6FJtn3rIQ38kzwhswq6pnC4iGpQb5jhHFFcdoR_sGnPqz2fTiTdu=
+9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw=
+48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgE=
+c9YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfW=
+Km2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5M=
+yOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7=
+PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2=
+FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsi=
+iz4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1=
+NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2Bmh5ie0qAn63r9WrBy=
+PyyqgdZYpRI-2BL9SAEPUldMOL8Oefq70d0lWabdfIKUH69Oj3OSqgnAfKUK1ZGdBl-2BHN941Z=
+Cg7nuj9Qic7EtFxBQsrF54uAAskqRgeq4B6va59el">your account page</a> to change =
+your contact details, privacy settings, and other settings.<br>
+                  <a class=3D"footer-link" href=3D"http://clicks.meetup.com=
+/ls/click?upn=3Du001.diletKXCNW6YnMIA4YdA2khSamDKjnu5NZPSD0tvLOLJ1VsjyiQp-2=
+B7GZLUd-2BkCllidq-2B-2Bc7FyhD3dRLGx3MgPEursumWO7rPdGZ232ZvBTQD-2BCzr6gBjQQU=
+nOrLLe40m79TqJfKy-2FCszySOtfKHi-2FACjtFKpIbz2Bc9BX2tw0GmMVB4OGOPI5E6QdWr9ou=
+fww8fc7WRHRZE5P6uClkcjc0NYMGM05KfKEVCVvhg978WwT3zLAKFyX4krDQKRbKbyIkrXit-2F=
+r-2FePHxNSajVWGQIspBOj7ygyb4WcJQWPbuCk-3DdWe2_sGnPqz2fTiTdu9SJOmTvrLQ-2FWOz=
+8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84eBbiAmYxORMPsw48w6mjSrQAUnAbYz=
+vwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2FWEAreBsk8TMYgEc9YHSksWdloS8POL=
+N6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4MDwEogegUOKaDfWKm2E6u8Eu4s7qaSL=
+5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADEsBqLqjjs3EYR5MyOGL4OX-2F0Drwt-=
+2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73NfjkE2SgAeUJQUuD7PumCz3Z-2BoSNktK=
+mK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdElleVxGAmApR2in-2FjvB4WDorJ2bJ0GB=
+YGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKTALzsYyehgrNwsiiz4GLjWCrSuM71Si=
+L6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlLz8cdrEHsVk5kq1NpRyPF134E1EuouA=
+dGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2BmngPH8rpXvS95NHTT9Y69yiyKvzbVlnjw=
+cYSGUBARGWUMOmjyAD2P-2BPIpDjn5TK1-2F6C6u3TzEV2A8talihXUKX7JX567-2FQ0-2FjZB-=
+2FHBbGjPgAoclPrlpkutl1Kf-2FB938eg">Meetup LLC</a>, 169 Madison Ave., STE 11=
+218, NY, NY 10016<br>
+                   Read our <a class=3D"footer-link" href=3D"http://clicks.=
+meetup.com/ls/click?upn=3Du001.NY3oBFzZ5LJDG7YcnfSAKsQAD0GnFi1zzMJ-2FAp8-2F=
+vJVaO-2FyHLCO78pv31bCvFric1M7aoMkOQDamUa7WxCLYMfWHkNEHNzIndcP0y3NF5uWPUbKyw=
+lTQC4HNeXn9cGoEBBNCVLrbEyZMB8X8M460QRKjewWaICqW1WW-2B2LP5Y-2FZWpY03-2F5-2F9=
+BQrhOlehOvkbTFtrWVq-2BzXhovcr9Zi8HiVcE1aIPAiFsm-2B4FjHqB67Ew23hWmd7C-2B0pWk=
+qq4sa5DKDhXR325Uo2UymiLLT2ipsXPM077Tznrzp5jvO8Tl8Me3NLzRNNzx8zY9sSl1mUxib32=
+_sGnPqz2fTiTdu9SJOmTvrLQ-2FWOz8LWDYu1-2FO9hW-2BkZJNrIUiiXE04IziHml42Zj3nA84=
+eBbiAmYxORMPsw48w6mjSrQAUnAbYzvwmpKaozp2clNCPW65h2prZSj3Qv6zDYqqbTHICniL-2F=
+WEAreBsk8TMYgEc9YHSksWdloS8POLN6eTiIY2U9wxhhrol1zPsu8JF-2BGH6Y8aVFoSKLRcj4M=
+DwEogegUOKaDfWKm2E6u8Eu4s7qaSL5LYCGlWp6rSimjvhFrBF1MOZ-2Fns0Mc2Gwe7kuRbqADE=
+sBqLqjjs3EYR5MyOGL4OX-2F0Drwt-2BOocI4rolFSRVm9Gx3kBRYnhUhcJQDN9Mqdc-2F73Nfj=
+kE2SgAeUJQUuD7PumCz3Z-2BoSNktKmK1nnF7IrSX2oH-2BEe6tDwcghNSOkq1HKiRYhQzEdEll=
+eVxGAmApR2in-2FjvB4WDorJ2bJ0GBYGDEr82wwsfzUgDjvu8mSgSd4HLgnmJUg6e2CVBXPXXKT=
+ALzsYyehgrNwsiiz4GLjWCrSuM71SiL6BakHgi92EYvg-2FPzQeJERl8p76fPYBu01KWMkgiwlL=
+z8cdrEHsVk5kq1NpRyPF134E1EuouAdGgD5yHWTtDnQeJG1-2FjIBja-2FYpa8Asv1QS3-2Bmv4=
+QRSXxdcbCbF6GbYsoCd2GGc2-2Bw8OGbEPMgr9jN3-2F7-2FLjMg5Pv2GMo0-2BSal8FgexiJXV=
+T08WgZPLDDtT2fYe5Nfr4Ti1dk4HDBfgNKzHBduhU-2BEBOykGnraqEgWIfLU">Privacy Poli=
+cy</a>.</p>
+                  </td>
+                </tr>
+               =20
+              </tbody>
+            </table>
+            </td>
+          </tr>
+          </table>
+    </div>
+ =20
+
+
+
+<!-- email/includes/event_reminder.html ends -->
+
+
+</div>
+<img src=3D"http://clicks.meetup.com/wf/open?upn=3Du001.0qy1FYNcFqGC8JJb-2F=
+EQRhW4ruiBWUhSDBGrJGjhiIS0XZjlJQHbLTm9nBdr-2BbAavZWYbsto-2F0Xr6P9QFNCLK2TV0=
+pa8vieWfhANOLBaV9xRT6TpNyBkrLg2XBTbCVxP-2FCPG9URS8sqQRC29KJGk6klQfaA-2BRFvF=
+tV4O5YVho7e4BArg8b4RFLrf3FYmE71NC78Mb-2FkImJFBHxFrIoxkklICELGcexUNC86sieYlt=
+rrmm-2FHW3uYFJvYzZfv1sUw3mxSJrLEdnOfs-2FzGydGkNU7T-2F2NqNjwF3YEIDyQ-2BfvngF=
+mPqZqj5cuhVD-2BVYS-2BazCzY43bbqpzAi9pAPdAbFf6j5a3I99rxCeCtIfpyQ-2F-2BQu-2FC=
+Dj6KwS-2Bn7rQJAlViPeWtr64gf3gkGqHAzjTbQfcmtOqvxwC9AmDmz7XVLSvl1ZJn0UYXmHJ3g=
+L9zTi4HUCUYblxKO6CffTl4pziHjHSLKrkxABXNL8frwV6LbriRcPYjZSoW7hPJDwkccC-2BLhb=
+VTvUIRigQpRA5sRbv6uOi-2BiLb6KyPX9-2Fnne6ttjr6upWRyub6j118JS93UilpESdTM3-2Bn=
+DjSXRZNURZWul4WsLq-2FBN2gfavuwc0C3BSm93eK5gpBd-2Bg8V13fr-2BN9rf-2BwdoZTmMwU=
+xN95i2lLjMar-2FTnUgYo9-2BlKc7lXD57uWdffSxx8axH-2BFmVoQF2ar-2BLsAYqsYYsoXJKw=
+50C07-2B-2BtJIUX3jD0Ce8juuNuGDRb1rSCy2pFYnVtGz-2FfipNdm-2FVQfPwrllEeDqBc1by=
+KKAl-2Fdq2MQ-3D-3D" alt=3D"" width=3D"1" height=3D"1" border=3D"0" style=3D=
+"height:1px !important;width:1px !important;border-width:0 !important;margi=
+n-top:0 !important;margin-bottom:0 !important;margin-right:0 !important;mar=
+gin-left:0 !important;padding-top:0 !important;padding-bottom:0 !important;=
+padding-right:0 !important;padding-left:0 !important;"/></body></html>
+
+--f09f3f8fe8c2d8764e860e6d686066e7386c493d58920a4813c805a09218--

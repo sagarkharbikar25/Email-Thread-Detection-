@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { ThreatLevel } from '../types';
 import { Radar, Eye, ShieldAlert, Clock, ArrowUpRight } from 'lucide-react';
+
+export type ThreatLevel = 'CRITICAL' | 'HIGH' | 'MEDIUM' | 'LOW' | 'LEGITIMATE';
 
 interface IncidentPing {
   id: string;
@@ -101,8 +102,10 @@ export const PolarThreatRadar: React.FC<PolarThreatRadarProps> = ({ onSelectInci
           {/* Radial Crosshair Axes */}
           {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map((deg) => {
             const rad = (deg * Math.PI) / 180;
-            const x2 = centerX + maxRadius * Math.cos(rad);
-            const y2 = centerY + maxRadius * Math.sin(rad);
+            const x2 = (centerX + maxRadius * Math.cos(rad)).toFixed(2);
+            const y2 = (centerY + maxRadius * Math.sin(rad)).toFixed(2);
+            const textX = (centerX + (maxRadius + 14) * Math.cos(rad)).toFixed(2);
+            const textY = (centerY + (maxRadius + 14) * Math.sin(rad) + 4).toFixed(2);
             return (
               <g key={deg}>
                 <line
@@ -114,8 +117,8 @@ export const PolarThreatRadar: React.FC<PolarThreatRadarProps> = ({ onSelectInci
                   strokeWidth="1"
                 />
                 <text
-                  x={centerX + (maxRadius + 14) * Math.cos(rad)}
-                  y={centerY + (maxRadius + 14) * Math.sin(rad) + 4}
+                  x={textX}
+                  y={textY}
                   fill="#64748b"
                   fontSize="8"
                   fontFamily="monospace"
@@ -130,7 +133,7 @@ export const PolarThreatRadar: React.FC<PolarThreatRadarProps> = ({ onSelectInci
           {/* Animated Sweeping Radar Scanner Cone */}
           <g className="origin-center" style={{ transformOrigin: `${centerX}px ${centerY}px` }}>
             <path
-              d={`M ${centerX} ${centerY} L ${centerX + maxRadius} ${centerY} A ${maxRadius} ${maxRadius} 0 0 1 ${centerX + maxRadius * Math.cos(Math.PI / 6)} ${centerY + maxRadius * Math.sin(Math.PI / 6)} Z`}
+              d={`M ${centerX} ${centerY} L ${centerX + maxRadius} ${centerY} A ${maxRadius} ${maxRadius} 0 0 1 ${(centerX + maxRadius * Math.cos(Math.PI / 6)).toFixed(2)} ${(centerY + maxRadius * Math.sin(Math.PI / 6)).toFixed(2)} Z`}
               fill="url(#radar-sweep-gradient)"
               className="animate-spin"
               style={{ animationDuration: '6s', transformOrigin: `${centerX}px ${centerY}px` }}
@@ -151,8 +154,8 @@ export const PolarThreatRadar: React.FC<PolarThreatRadarProps> = ({ onSelectInci
           {SAMPLE_PINGS.map((ping) => {
             const rad = (ping.angle * Math.PI) / 180;
             const r = ping.radius * maxRadius;
-            const px = centerX + r * Math.cos(rad);
-            const py = centerY + r * Math.sin(rad);
+            const px = (centerX + r * Math.cos(rad)).toFixed(2);
+            const py = (centerY + r * Math.sin(rad)).toFixed(2);
             const color = getSeverityColor(ping.severity);
             const isHovered = hoveredPing?.id === ping.id;
 

@@ -114,3 +114,38 @@ async def get_case_emails(case_id: str, db: AsyncSession = Depends(get_db)):
     stmt = select(Email).where(Email.case_id == case_id).order_by(desc(Email.created_at))
     res = await db.execute(stmt)
     return res.scalars().all()
+
+@router.get("/{case_id}/graph")
+async def get_case_global_graph(case_id: str, db: AsyncSession = Depends(get_db)):
+    """
+    Generate a Campaign-Level Global Threat Graph.
+    Merges nodes and edges from all emails in this case to reveal shared infrastructure.
+    """
+    from app.models.models import AnalysisResult
+    stmt = select(AnalysisResult).join(Email).where(Email.case_id == case_id)
+    res = await db.execute(stmt)
+    results = res.scalars().all()
+    
+    global_nodes = {}
+    global_edges = []
+    
+    for analysis in results:
+        graph_data = analysis.graph_data or {}
+        nodes = graph_data.get("nodes", [])
+        edges = graph_data.get("edges", [])
+        
+        for node in nodes:
+            global_nodes[node["id"]] = node # deduplicate nodes by ID
+            
+        global_edges.extend(edges)
+        
+    # Deduplicate edges based on source/target
+    unique_edges = {}
+    for edge in global_edges:
+        edge_key = f"{edge.get('source')}-{edge.get('target')}"
+        unique_edges[edge_key] = edge
+        
+    return {
+        "nodes": list(global_nodes.values()),
+        "edges": list(unique_edges.values())
+    }

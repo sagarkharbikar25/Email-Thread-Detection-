@@ -6,14 +6,30 @@ export default function UploadPage() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedFile) return;
     setIsSubmitting(true);
-    setTimeout(() => {
+    
+    try {
+      const formData = new FormData();
+      formData.append("file", selectedFile);
+      
+      const response = await fetch("http://localhost:8000/api/v1/emails/upload?sync_mode=true", {
+        method: "POST",
+        body: formData,
+      });
+      
+      if (!response.ok) throw new Error("Upload failed");
+      
+      const data = await response.json();
+      alert(`Successfully analyzed ${selectedFile.name}. Risk Score: ${data.risk_score}`);
+      window.location.href = "/dashboard";
+    } catch (err) {
+      console.error(err);
+      alert("Failed to ingest email.");
       setIsSubmitting(false);
-      alert(`Queued ${selectedFile.name} for forensic analysis.`);
-    }, 800);
+    }
   };
 
   return (

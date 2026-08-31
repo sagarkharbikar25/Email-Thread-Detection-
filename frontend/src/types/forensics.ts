@@ -77,6 +77,11 @@ export interface InvestigationSummary {
   relayHops: RelayHop[];
   threatSignals: ThreatSignal[];
   status: InvestigationStatus;
+  signals?: any[];
+  urls?: string[];
+  attachments?: any[];
+  authentication?: any;
+  hops?: any[];
 }
 
 export interface RecentInvestigationItem {

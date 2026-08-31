@@ -1,5 +1,90 @@
 import { InvestigationSummary, RecentInvestigationItem } from "../types/forensics";
 
+export const MOCK_GRAPH_DATA = {
+  nodes: [
+    // Core Actors & Campaigns
+    { id: "actor-gaza", label: "Gaza Cybergang", type: "actor", sublabel: "Threat Actor", severity: "critical", details: { status: "Active", associated: "MoleRats", last_seen: "2 days ago" } },
+    { id: "actor-molerats", label: "MoleRats", type: "actor", sublabel: "Threat Actor", severity: "critical", details: { status: "Active", alias: "TA402", last_seen: "Today" } },
+    { id: "camp-q2", label: "Q2 Decoy Campaign", type: "campaign", sublabel: "Campaign", severity: "high", details: { target: "Financial", vectors: "Spearphishing" } },
+    
+    // Tactics / MITRE
+    { id: "t-1566", label: "T1566.001", type: "tactic", sublabel: "Spearphishing", severity: "high", details: { phase: "Initial Access", description: "Spearphishing Attachment" } },
+    { id: "t-1204", label: "T1204.001", type: "tactic", sublabel: "User Execution", severity: "medium", details: { phase: "Execution", description: "Malicious Link" } },
+    { id: "t-1059", label: "T1059.007", type: "tactic", sublabel: "JavaScript", severity: "medium", details: { phase: "Execution", description: "JavaScript/JScript" } },
+
+    // Malware Families
+    { id: "mal-poisonivy", label: "POISONIVY", type: "malware", sublabel: "RAT", severity: "critical", details: { type: "Remote Access Trojan", c2: "Active" } },
+    { id: "mal-spark", label: "SPARK", type: "malware", sublabel: "Backdoor", severity: "high", details: { type: "Backdoor", c2: "Inactive" } },
+    { id: "mal-sharpstage", label: "SHARPSTAGE", type: "malware", sublabel: "Dropper", severity: "high", details: { type: "Dropper", payload: "POISONIVY" } },
+
+    // Domains
+    { id: "dom-paypa1", label: "paypa1-security.com", type: "domain", sublabel: "Spoofed Domain", severity: "critical", details: { registrar: "NameCheap", created: "12 days ago", risk: "Suspicious" } },
+    { id: "dom-berbank", label: "berbank.com", type: "domain", sublabel: "Spoofed Domain", severity: "critical", details: { registrar: "reg-ripn", created: "Dec 13 2018", risk: "Malicious" } },
+    { id: "dom-neerco", label: "neerco.net", type: "domain", sublabel: "C2 Domain", severity: "high", details: { registrar: "reg-ripn", created: "Dec 12 2019", risk: "Malicious" } },
+    { id: "dom-cin", label: "cin.kp", type: "domain", sublabel: "C2 Domain", severity: "high", details: { registrar: "r01-reg-ripn", created: "Oct 25 2019", risk: "Malicious" } },
+
+    // IPs
+    { id: "ip-203", label: "203.0.113.5", type: "ip", sublabel: "Origin IP", severity: "critical", details: { location: "Singapore", asn: "AS45102", owner: "DigitalOcean" } },
+    { id: "ip-195", label: "195.208.0.4", type: "ip", sublabel: "C2 Server", severity: "critical", details: { location: "Russia", asn: "AS56724", owner: "Hostkey B.V." } },
+    { id: "ip-234-1", label: "234.221.98.01", type: "ip", sublabel: "C2 Server", severity: "high", details: { location: "North Korea", asn: "AS43783", owner: "Ryugyong-dong" } },
+    { id: "ip-234-2", label: "234.221.98.03", type: "ip", sublabel: "Relay Node", severity: "medium", details: { location: "North Korea", asn: "AS43783", owner: "Ryugyong-dong" } },
+    { id: "ip-23-1", label: "23.94.218.130", type: "ip", sublabel: "Drop Zone", severity: "high", details: { location: "USA", asn: "AS36352", owner: "ColoCrossing" } },
+    { id: "ip-23-2", label: "23.94.218.118", type: "ip", sublabel: "Drop Zone", severity: "medium", details: { location: "USA", asn: "AS36352", owner: "ColoCrossing" } },
+
+    // Emails
+    { id: "email-admin", label: "admin@neerco.net", type: "email", sublabel: "Threat Actor Email", severity: "high", details: { registered_domains: 4, activity: "High" } },
+    { id: "email-card", label: "card@tours-cin.org", type: "email", sublabel: "Phishing Sender", severity: "high", details: { registered_domains: 2, activity: "Medium" } },
+    { id: "email-trc", label: "accounts@paypa1-security.com", type: "email", sublabel: "Phishing Sender", severity: "critical", details: { sent_volume: "10,000+", first_seen: "2 days ago" } },
+
+    // Files/Hashes
+    { id: "hash-1", label: "00D7F155F1...", type: "hash", sublabel: "SHA256 Hash", severity: "critical", details: { filename: "Invoice_9921.pdf", type: "PDF Exploit" } },
+    { id: "hash-2", label: "B7373B9768...", type: "hash", sublabel: "SHA256 Hash", severity: "high", details: { filename: "payload.exe", type: "PE32 Executable" } },
+    { id: "hash-3", label: "2E4671C517...", type: "hash", sublabel: "SHA256 Hash", severity: "high", details: { filename: "macro.docm", type: "Office Macro" } }
+  ],
+  edges: [
+    // Actor connections
+    { source: "actor-gaza", target: "actor-molerats", label: "associated with" },
+    { source: "actor-molerats", target: "camp-q2", label: "orchestrates" },
+    
+    // Tactic connections
+    { source: "camp-q2", target: "t-1566", label: "uses tactic" },
+    { source: "camp-q2", target: "t-1204", label: "uses tactic" },
+    { source: "actor-molerats", target: "t-1059", label: "uses tactic" },
+    
+    // Malware connections
+    { source: "actor-molerats", target: "mal-poisonivy", label: "uses malware" },
+    { source: "actor-gaza", target: "mal-spark", label: "uses malware" },
+    { source: "t-1566", target: "mal-sharpstage", label: "delivers" },
+    { source: "mal-sharpstage", target: "mal-poisonivy", label: "drops" },
+
+    // Domain <-> IP connections
+    { source: "dom-paypa1", target: "ip-203", label: "resolves to" },
+    { source: "dom-berbank", target: "ip-195", label: "resolves to" },
+    { source: "dom-neerco", target: "ip-234-1", label: "resolves to" },
+    { source: "dom-cin", target: "ip-234-1", label: "resolves to" },
+    { source: "dom-cin", target: "ip-234-2", label: "resolves to" },
+    { source: "dom-neerco", target: "ip-23-1", label: "resolves to" },
+    { source: "dom-neerco", target: "ip-23-2", label: "resolves to" },
+    
+    // Malware <-> C2 connections
+    { source: "mal-poisonivy", target: "ip-195", label: "C2 communication" },
+    { source: "mal-spark", target: "dom-neerco", label: "C2 communication" },
+
+    // Email <-> Domain connections
+    { source: "email-admin", target: "dom-neerco", label: "registered domain" },
+    { source: "email-card", target: "dom-cin", label: "registered domain" },
+    { source: "email-trc", target: "dom-paypa1", label: "sender domain" },
+    
+    // File/Hash connections
+    { source: "t-1566", target: "hash-1", label: "attachment" },
+    { source: "hash-1", target: "email-trc", label: "distributed by" },
+    { source: "hash-2", target: "mal-poisonivy", label: "variant hash" },
+    { source: "hash-3", target: "mal-sharpstage", label: "variant hash" },
+    { source: "hash-2", target: "ip-23-1", label: "downloaded from" },
+    { source: "hash-3", target: "ip-23-2", label: "downloaded from" }
+  ]
+};
+
 export const MOCK_INVESTIGATION: InvestigationSummary = {
   id: "TRC-1024",
   caseNumber: "TRC-1024",
@@ -120,8 +205,40 @@ X-Mailer: Custom Spoof Engine v4.2`,
     { id: "s5", label: "Newly Registered Domain", percentage: 75, severity: "high", description: "Domain registered only 12 days ago via privacy registrar." },
     { id: "s6", label: "URL Malicious", percentage: 65, severity: "high", description: "Embedded hyperlink points to deceptive credential harvesting endpoint." }
   ],
-  status: "Completed"
-};
+  status: "Completed",
+  
+  // New fields for specific tabs
+  signals: [
+    { name: "Urgency Indicators", confidence: 0.95, severity: "CRITICAL", description: "Subject and body contain high-pressure vocabulary ('Verify Immediately', 'Account Suspended') typical of BEC attacks." },
+    { name: "Financial Request", confidence: 0.82, severity: "HIGH", description: "Contextual analysis identifies a request to verify billing information and update payment methods." },
+    { name: "Greeting Anomaly", confidence: 0.76, severity: "MEDIUM", description: "Generic greeting ('Dear Customer') used instead of personalized name, common in mass phishing." }
+  ],
+  urls: [
+    "https://paypa1-security.com/auth/verify?token=8f9a2b",
+    "http://secure-update-portal.info/login.php"
+  ],
+  attachments: [
+    { filename: "Account_Verification_Form.pdf", size_bytes: 245000, sha256: "8f4a2d9b91bc731a5e4299de801c23f990b79313ea390f77103ba12cb69101f3", is_suspicious: true, mime_type: "application/pdf" },
+    { filename: "logo.png", size_bytes: 12040, sha256: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", is_suspicious: false, mime_type: "image/png" }
+  ],
+  authentication: {
+    spf_result: "fail",
+    spf_domain: "paypa1-security.com",
+    spf_alignment: false,
+    dkim_result: "fail",
+    dkim_domain: "paypa1-security.com",
+    dkim_selector: "default",
+    dkim_alignment: false,
+    dmarc_result: "fail",
+    dmarc_policy: "quarantine"
+  },
+  hops: [
+    { hop_type: "origin", by_host: "sg-mail-out.paypa1.com", timestamp: "2025-05-24T09:52:04+05:30", ip_address: "203.0.113.5", with_protocol: "SMTP", from_host: "unknown", geo_data: { city: "Singapore", country: "SG", latitude: 1.3521, longitude: 103.8198 } },
+    { hop_type: "intermediate", by_host: "mumbai-gateway.isp.net", timestamp: "2025-05-24T09:53:18+05:30", ip_address: "103.21.244.18", with_protocol: "ESMTP", from_host: "sg-mail-out.paypa1.com", geo_data: { city: "Mumbai", country: "IN", latitude: 19.076, longitude: 72.8777 } },
+    { hop_type: "intermediate", by_host: "pune-relay.node.net", timestamp: "2025-05-24T09:54:33+05:30", ip_address: "103.45.67.12", with_protocol: "ESMTP", from_host: "mumbai-gateway.isp.net", geo_data: { city: "Pune", country: "IN", latitude: 18.5204, longitude: 73.8567 } },
+    { hop_type: "final", by_host: "mx1.example.in", timestamp: "2025-05-24T09:55:12+05:30", ip_address: "10.0.0.25", with_protocol: "Postfix", from_host: "pune-relay.node.net", geo_data: { city: "Local Network", country: "LOCAL", latitude: 18.5204, longitude: 73.8567 } }
+  ]
+} as any;
 
 export const MOCK_INVESTIGATIONS_LIST: RecentInvestigationItem[] = [
   {

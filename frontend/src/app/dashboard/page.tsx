@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import {
-  Sidebar,
   Header,
   RiskScoreCard,
   ClassificationCard,
@@ -38,42 +38,151 @@ export default function DashboardPage() {
   const [isThreatSignalsModalOpen, setIsThreatSignalsModalOpen] = useState(false);
   const [isThreatGraphModalOpen, setIsThreatGraphModalOpen] = useState(false);
   const [selectedAuthType, setSelectedAuthType] = useState<"spf" | "dkim" | "dmarc" | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const handleSelectInvestigation = (item: RecentInvestigationItem) => {
-    setCurrentInvestigation((prev) => ({
-      ...prev,
-      id: item.id,
-      caseNumber: item.id,
-      subject: item.subject,
-      from: item.from,
-      riskScore: item.riskScore,
-      riskCategory: item.riskScore >= 80 ? "critical" : item.riskScore >= 60 ? "high" : "medium",
-      classification: item.classification,
-      classificationName:
-        item.classification === "BEC"
-          ? "Business Email Compromise"
-          : item.classification === "Phishing"
-            ? "Credential Phishing Attack"
-            : "Suspicious Activity",
-      threatLevel: item.riskScore >= 80 ? "CRITICAL" : item.riskScore >= 60 ? "HIGH" : "MEDIUM",
-      status: item.status,
-    }));
+  useEffect(() => {
+    const fetchDashboard = async () => {
+      try {
+        const response = await axios.get("http://localhost:8000/api/v1/emails");
+        const list = response.data;
+        
+        const mappedList: RecentInvestigationItem[] = list.map((item: any) => ({
+          id: item.id,
+          subject: item.subject,
+          from: item.from_display,
+          riskScore: item.risk_score || 0,
+          classification: item.classification || "Unknown",
+          date: new Date(item.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" }),
+          status: item.analysis_status === "COMPLETED" ? "Completed" : "Analyzing",
+        }));
+        
+        if (mappedList.length > 0) {
+          setInvestigationsList(mappedList);
+          await loadInvestigationDetails(mappedList[0].id, mappedList[0]);
+        }
+      } catch (err) {
+        console.error("Failed to fetch API, falling back to mock data", err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchDashboard();
+  }, []);
+
+  const loadInvestigationDetails = async (id: string, fallbackItem?: RecentInvestigationItem) => {
+    try {
+      const response = await axios.get(`http://localhost:8000/api/v1/emails/${id}`);
+      const data = response.data;
+
+      // Calculate logic for mapped values
+      const score = data.risk_score || 0;
+      const category = score >= 80 ? "critical" : score >= 60 ? "high" : score >= 40 ? "medium" : "low";
+
+      // Authentication formatting
+      const auth = data.authentication || {};
+      
+      setCurrentInvestigation({
+        id: data.id,
+        caseNumber: data.id,
+        subject: data.subject,
+        from: data.from_display || data.from_address,
+        to: (data.to_addresses || []).join(", "),
+        date: new Date(data.created_at).toLocaleString(),
+        receivedPath: [], // we can populate from data.hops
+        messageId: data.raw_message_id,
+        attachmentsCount: data.attachments?.length || 0,
+        linksCount: data.urls?.length || 0,
+        rawHeaders: "Raw headers are available via backend API /raw",
+        riskScore: score,
+        riskCategory: category as any,
+        classification: data.classification || "Unknown",
+        classificationName: data.classification,
+        confidence: data.origin_confidence ? `${data.origin_confidence}%` : "95%",
+        threatLevel: score >= 80 ? "CRITICAL" : score >= 60 ? "HIGH" : "MEDIUM",
+        threatDescription: data.origin_assessment || "No threat description available",
+        analysisTime: "4.2 sec",
+        analysisDate: new Date(data.created_at).toLocaleString(),
+        evidenceHash: data.sha256,
+        hashAlgorithm: "SHA-256",
+        authResults: {
+          spf: { status: auth.spf_result || "NONE", reason: auth.spf_alignment || "" },
+          dkim: { status: auth.dkim_result || "NONE", reason: auth.dkim_alignment || "" },
+          dmarc: { status: auth.dmarc_result || "NONE", reason: auth.dmarc_policy || "" },
+        },
+        relayHops: (data.hops || []).map((h: any, i: number) => ({
+          id: i,
+          location: h.geo_data?.city || h.by_host,
+          countryCode: h.geo_data?.country || "UN",
+          flagUrl: "https://flagcdn.com/w20/un.png",
+          ip: h.ip_address || h.by_host,
+          timestamp: h.timestamp || "",
+          severity: "neutral",
+        })),
+        threatSignals: (data.signals || []).map((s: any) => ({
+          id: s.name || s.title,
+          label: s.title || s.name,
+          percentage: s.confidence_score ? Math.round(s.confidence_score * 100) : 100,
+          severity: s.severity.toLowerCase(),
+          description: s.description,
+        })),
+        status: data.analysis_status === "COMPLETED" ? "Completed" : "Analyzing",
+      });
+    } catch (err) {
+      console.error("Failed to load details, using mock", err);
+      if (fallbackItem) {
+        // Just use partial update like before
+        setCurrentInvestigation((prev) => ({
+          ...prev,
+          id: fallbackItem.id,
+          caseNumber: fallbackItem.id,
+          subject: fallbackItem.subject,
+          from: fallbackItem.from,
+          riskScore: fallbackItem.riskScore,
+          classification: fallbackItem.classification,
+          status: fallbackItem.status,
+        }));
+      }
+    }
   };
 
-  const handleIngestNewEmail = (content: File | string) => {
-    const newId = `TRC-${Math.floor(1025 + Math.random() * 900)}`;
-    const newItem: RecentInvestigationItem = {
-      id: newId,
-      subject: typeof content === "string" ? "Ingested Artifact: User Submitted" : (content as File).name,
-      from: "analyst-upload@gateway.local",
-      riskScore: 84,
-      classification: "BEC",
-      date: new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" }),
-      status: "Completed",
-    };
+  const handleSelectInvestigation = (item: RecentInvestigationItem) => {
+    loadInvestigationDetails(item.id, item);
+  };
 
-    setInvestigationsList((prev) => [newItem, ...prev]);
-    handleSelectInvestigation(newItem);
+  const handleIngestNewEmail = async (content: File | string) => {
+    if (typeof content === "string") {
+      alert("Text ingestion not supported yet, please upload a .eml file");
+      return;
+    }
+    
+    try {
+      const formData = new FormData();
+      formData.append("file", content);
+      
+      const response = await axios.post("http://localhost:8000/api/v1/emails/upload?sync_mode=true", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      });
+      
+      const data = response.data;
+      
+      const newItem: RecentInvestigationItem = {
+        id: data.email_id,
+        subject: data.filename,
+        from: "User Upload",
+        riskScore: data.risk_score || 0,
+        classification: data.classification || "Unknown",
+        date: new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" }),
+        status: data.status === "COMPLETED" ? "Completed" : "Analyzing",
+      };
+
+      setInvestigationsList((prev) => [newItem, ...prev]);
+      handleSelectInvestigation(newItem);
+    } catch (err) {
+      console.error("Upload failed", err);
+      alert("Failed to upload email to backend.");
+    }
   };
 
   const handleExportPDF = () => {
@@ -91,21 +200,14 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className="flex h-screen overflow-hidden bg-[#070C16] text-[#d7e3fb] select-none">
-      <Sidebar
-        activeTab={activeTab}
-        onTabChange={setActiveTab}
-        onOpenIngest={() => setIsIngestModalOpen(true)}
+    <>
+      <Header
+        investigation={currentInvestigation}
+        onExportReport={handleExportPDF}
+        onExportEvidence={handleExportEvidence}
       />
 
-      <div className="flex-1 flex flex-col h-full overflow-hidden bg-[#070C16]">
-        <Header
-          investigation={currentInvestigation}
-          onExportReport={handleExportPDF}
-          onExportEvidence={handleExportEvidence}
-        />
-
-        <main className="flex-1 overflow-y-auto p-4 custom-scrollbar bg-[#070C16]">
+      <main className="flex-1 overflow-y-auto p-4 custom-scrollbar bg-[#070C16]">
           <div className="grid grid-cols-12 gap-4 max-w-[1600px] mx-auto pb-6">
             <div className="col-span-12 lg:col-span-8">
               <PolarThreatRadar onSelectIncident={(subject) => console.log(subject)} />
@@ -178,8 +280,6 @@ export default function DashboardPage() {
             />
           </div>
         </main>
-      </div>
-
       <HeadersModal
         isOpen={isHeadersModalOpen}
         onClose={() => setIsHeadersModalOpen(false)}
@@ -210,6 +310,6 @@ export default function DashboardPage() {
         isOpen={isThreatGraphModalOpen}
         onClose={() => setIsThreatGraphModalOpen(false)}
       />
-    </div>
+    </>
   );
 }
