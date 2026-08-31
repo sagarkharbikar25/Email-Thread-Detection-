@@ -49,6 +49,7 @@ export function RelayTraceCard({ hops, onHopSelect }: RelayTraceCardProps) {
                       person
                     </span>
                   ) : hop.flagUrl ? (
+                    /* eslint-disable-next-line @next/next/no-img-element */
                     <img
                       src={hop.flagUrl}
                       alt={`${hop.location} flag`}
