@@ -1,0 +1,24 @@
+Received: from out-21.smtp.github.com (142.250.190.46) by mx.victim-corp.com with ESMTPS id gh112233; Mon, 31 Aug 2026 06:00:15 +0000
+Authentication-Results: mx.victim-corp.com; spf=pass (sender IP 142.250.190.46 is permitted by github.com) smtp.mailfrom=noreply@github.com; dkim=pass header.d=github.com header.s=s202105; dmarc=pass (p=reject) header.from=github.com
+Received-SPF: pass (mx.victim-corp.com: domain of noreply@github.com designates 142.250.190.46 as permitted sender)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=github.com; s=s202105; h=from:to:subject:date:message-id; bh=validhashvalidhash==; b=c2lnbmF0dXJl==
+From: "GitHub Security" <noreply@github.com>
+To: <developer@victim-corp.com>
+Reply-To: <noreply@github.com>
+Return-Path: <noreply@github.com>
+Subject: [GitHub] Security alert: A new SSH key was added to your account
+Date: Mon, 31 Aug 2026 06:00:00 +0000
+Message-ID: <github/security/ssh/20260831@github.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hi developer,
+
+A new SSH key (SHA256:abcd1234efgh5678) was recently added to your GitHub account from IP 103.151.125.44.
+
+If you added this key, you can safely ignore this notification.
+If you did not add this key, please visit https://github.com/settings/keys to revoke it immediately.
+
+Thanks,
+The GitHub Security Team

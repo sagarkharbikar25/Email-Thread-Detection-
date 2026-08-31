@@ -1,0 +1,29 @@
+# Environments & IDE
+.env
+.env.local
+.vscode/
+.idea/
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+build/
+dist/
+*.egg-info/
+
+# Databases & raw files
+*.db
+*.sqlite
+*.sqlite3
+data/emails/*.eml
+!data/demo/*.eml
+
+# Submodules or cloned temp folder
+Email-Thread-Detection-/
