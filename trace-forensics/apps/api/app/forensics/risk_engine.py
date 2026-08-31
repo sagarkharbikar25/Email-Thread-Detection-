@@ -22,7 +22,7 @@ def build_signals(
     signals: List[RiskSignal] = []
     
     # 0. ML NLP Content & Urgency Evaluation (Person 3 Deliverable)
-    nlp_res = nlp_scorer.analyze_content(parsed.subject or "", parsed.body_text or "")
+    nlp_res = nlp_scorer.analyze_content(parsed.subject or "", parsed.body_plain or "")
     if nlp_res.get("is_suspicious_content"):
         prob = nlp_res.get("ml_phish_probability", 0)
         intent = nlp_res.get("predicted_intent", "SUSPICIOUS")
